@@ -6,10 +6,13 @@ these files: each page has real-life examples, a `<Name>Lab.tsx` that uses every
 
 ```
 components/<page>/<File>.tsx      e.g. components/button/ButtonLab.tsx
+components/<page>/ide.json        the page's MarchIDE: its layout, description and files
+ide.json                          every page's ide.json in one file (node tools/bundle.mjs writes it)
 ```
 
-The showcase reads them pinned to a commit (`cdn.jsdelivr.net/gh/marchjs-com/examples@<sha>/components/…`), so a
-March release always shows the examples written for it.
+The showcase reads them pinned to a commit (`cdn.jsdelivr.net/gh/marchjs-com/examples@<sha>/…`), so a March release
+always shows the examples written for it. It loads the root `ide.json` once, in the background, when the site opens.
+After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails when the root file is out of date).
 
 ## Pages (203)
 
