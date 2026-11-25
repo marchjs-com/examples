@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Sesle hareket eden sarmalayıcı; düzey, bas, orta, tiz ve tepe CSS değişkenleri, hazır efektler.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "DancingEmoji.tsx",
+			"src": "examples://components/audio-reactive/DancingEmoji.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SpeakerRing.tsx",
+			"src": "examples://components/audio-reactive/SpeakerRing.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AudioReactiveLab.tsx",
+			"src": "examples://components/audio-reactive/AudioReactiveLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AudioReactiveLab.test.tsx",
+			"src": "examples://components/audio-reactive/AudioReactiveLab.test.tsx"
+		}
+	]
+}

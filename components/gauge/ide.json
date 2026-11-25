@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "İbreli kadran: bölgeler, kırmızı çizgi, yaylı ibre, tepe işareti, dönen gösterge; hız, devir, yarım ve VU.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "RallyCar.tsx",
+			"src": "examples://components/gauge/RallyCar.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ServerHealth.tsx",
+			"src": "examples://components/gauge/ServerHealth.tsx"
+		},
+		{
+			"type": "code",
+			"name": "GaugeLab.tsx",
+			"src": "examples://components/gauge/GaugeLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "GaugeLab.test.tsx",
+			"src": "examples://components/gauge/GaugeLab.test.tsx"
+		}
+	]
+}
