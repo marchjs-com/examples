@@ -7,7 +7,7 @@ const drums = (el: Element | null) => [...(el?.querySelectorAll(".m-roll-d, .m-r
 test("hane sayısı sıfırla doldurur, kesir çarkı ayrılır, ad birimle okunur", () => {
   const s = renderTest(() => <OdometerLab />)
   expect(drums(s.get(".lab-mech .m-roll-vis"))).toBe("001234.5")
-  expect(s.get(".lab-mech .m-odo-roll")!.getAttribute("class")).toContain("has-frac")
+  expect(s.get(".lab-mech .m-odo-roll")!.getAttribute("class")).toContain("is-frac")
   expect(s.get(".lab-mech .m-odo")!.getAttribute("role")).toBe("img")
   expect(s.get(".lab-mech .m-odo")!.getAttribute("aria-label")).toContain("km")
 })
