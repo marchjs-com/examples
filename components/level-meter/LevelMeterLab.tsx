@@ -28,7 +28,7 @@ export function LevelMeterLab() {
         <LevelMeter source={demo} channels={2} scale="db" floor={-60} ticks tickFormat={(d: number) => `${d}`}
           colors={["brand-blue", "brand-gold", "brand-pink"]} size="lg" length={200} gap={3} variant="console" />
       </span>
-      <span class="lab-load" sx={{ flex: 1 }}>
+      <span class="lab-load" sx={{ flex: "grow" }}>
         <LevelMeter value={$a * 100} min={0} max={100} channels={1} orientation="horizontal" variant="flat" size="sm" segments={30}
           ticks={[0, 50, 100]} format={(x: number) => `yüzde ${Math.round(x * 100)}`} label="İşlemci" motion={false}
           peakHold={false} clip={false} class="lab-cpu" />
