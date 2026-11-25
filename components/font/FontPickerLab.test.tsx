@@ -16,6 +16,8 @@ test("aramada yazılan aile süzülür, eşleşmeyince kendi boş metni görün�
   expect(s.get(".lab-fp [role=option]")?.getAttribute("aria-label")).toBe("Fira Code")
   await s.type("Yazı tipi ara", "zzz")
   await s.wait(() => s.sees("Hiçbiri tutmadı"))
+  // boş metin hemen gelir, listenin satırları bir sonraki karede gider: onları da bekle
+  await s.wait(() => s.all(".lab-fp [role=option]").length === 0)
   expect(s.all(".lab-fp [role=option]").length).toBe(0)
 })
 
