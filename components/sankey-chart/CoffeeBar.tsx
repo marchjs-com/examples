@@ -2,7 +2,8 @@ import { SankeyChart } from "march/charts"
 import { Button } from "march/ui"
 
 // A coffee bar, from bean to cup: a playful, minimal SankeyChart.
-// Beans flow into brewing methods, brewing methods into drinks; each ribbon is as wide as the cups it carries.
+// Beans flow into brewing methods, brewing methods into drinks (milk joins the latte); each ribbon is as wide as the
+// cups it carries.
 // "Sabah telaşı" (morning rush) raises the orders: ribbons thicken, and from the third press a cold brew branch with
 // iced coffee appears. The fourth press goes back to a quiet morning, so the new branch also leaves again.
 // Use a Sankey diagram when quantities split and merge across stages, and you want to see where most of it goes.
@@ -10,11 +11,17 @@ import { Button } from "march/ui"
 // The flows for a rush level 0–3. Rows use SankeyChart's default keys (source, target, value), so no source / target
 // / value props are needed, and the nodes come from the names in the links. Above level 1 two extra links add the
 // cold brew branch: new nodes slide in and new ribbons draw from source to target.
+// The filter link is listed first on purpose: node order starts as the input order, which would put Filtre above
+// Espresso and cross the bean ribbons. The layout's relaxation passes (`iterations`, default 6) pull every node towards
+// its neighbours and untangle that; iterations={0} keeps the input order, crossings and all.
+// Milk (Süt) only feeds the latte, so it is a source one step shorter than the beans: with the default align
+// "justify" it starts at the left edge, align="right" moves it next to the brewing methods.
 const base = (rush: number) => [
+  { source: "Filtre", target: "☕ Filtre kahve", value: 18 },
   { source: "Etiyopya", target: "Espresso", value: 30 + rush * 10 }, { source: "Kolombiya", target: "Espresso", value: 20 + rush * 6 },
   { source: "Kolombiya", target: "Filtre", value: 18 }, { source: "Espresso", target: "☕ Latte", value: 22 + rush * 8 },
   { source: "Espresso", target: "☕ Americano", value: 16 + rush * 4 }, { source: "Espresso", target: "☕ Kortado", value: 12 + rush * 4 },
-  { source: "Filtre", target: "☕ Filtre kahve", value: 18 },
+  { source: "Süt 🥛", target: "☕ Latte", value: 10 + rush * 4 },
   ...(rush > 1 ? [{ source: "Etiyopya", target: "Soğuk demleme", value: 14 }, { source: "Soğuk demleme", target: "🧊 Buzlu kahve", value: 14 }] : []),
 ]
 

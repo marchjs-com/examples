@@ -19,6 +19,8 @@ export function CoffeeMap() {
   }
   // ChoroplethMap props:
   // - data: rows { id, value } built from $cups; these are the default keys, so no id / value props are needed.
+  // - The built-in map is Turkey's 81 provinces (map="turkey", the default); map="turkey-regions" would draw the 7
+  //   geographic regions instead, with rows naming regions ("Ege", "Karadeniz"). Your own `shapes` replace both.
   // - min={0}: the colour scale starts at zero cups (the default would start at the smallest count).
   // - colorScale={["#f5e6d3", "#6f4e37"]}: our own two-colour ramp, milk foam to coffee bean.
   // - noData="--m-surface-2": cities without coffee are a flat surface colour instead of the default hatch.

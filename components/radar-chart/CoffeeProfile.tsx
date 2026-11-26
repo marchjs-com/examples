@@ -24,8 +24,8 @@ export function CoffeeProfile() {
   //   needed. Reading $bean inside the function makes the chart update when the bean changes.
   // - max={10}: the rim is 10 for every bean; without it the rim would be each bean's own highest score and the
   //   shapes would not be comparable.
-  // - curve="smooth" + gridShape="circle": a closed curve on circular rings, a softer look that suits a taste profile
-  //   (the defaults are straight lines on polygons).
+  // - Straight lines on polygon rings (the defaults) keep every score readable as a corner; curve="smooth" +
+  //   gridShape="circle" would give a softer, rounder look.
   // - fill={0.4}: a stronger fill than the default 0.22, since there is only one shape to see through.
   // - levels={5}: five rings, one per 2 points.
   // - animate="spring-wobbly": an easing name; the radii morph to the new bean with a bouncy spring.
@@ -35,7 +35,7 @@ export function CoffeeProfile() {
   return <div sx={{ flex: "col", gap: 2 }}>
     {/* `aria-label` names the bean picker for screen readers ("Çekirdek" = bean). */}
     <Segmented size="sm" bind:value={$bean} aria-label="Çekirdek" options={[{ value: "etiyopya", label: "Etiyopya" }, { value: "kolombiya", label: "Kolombiya" }, { value: "sumatra", label: "Sumatra" }]} />
-    <RadarChart data={() => TASTES.map((label, i) => ({ label, value: BEANS[$bean]![i] }))} max={10} curve="smooth" gridShape="circle"
+    <RadarChart data={() => TASTES.map((label, i) => ({ label, value: BEANS[$bean]![i] }))} max={10}
       fill={0.4} levels={5} animate="spring-wobbly" title="Tat profili" height={260} />
   </div>
 }

@@ -17,16 +17,23 @@ const KINDS = [
 export function CandyJar() {
   // Candy counts per kind and flavor, one candy each at the start. A signal: replacing it redraws the chart.
   let $jar = KINDS.map((k) => k.flavors.map(() => 1))
-  // A handful: each flavor has a 40 % chance of getting 1–3 more. A new array is assigned (not mutated in place), so
-  // the signal notices the change.
-  const add = () => { $jar = $jar.map((row) => row.map((n) => n + (Math.random() < 0.4 ? 1 + Math.floor(Math.random() * 3) : 0))) }
+  // How many of each flavor the last handful brought (0 at the start), kept as `change` on every tile.
+  let $last = KINDS.map((k) => k.flavors.map(() => 0))
+  // A handful: each flavor has a 40 % chance of getting 1–3 more. New arrays are assigned (not mutated in place), so
+  // the signals notice the change.
+  const add = () => {
+    $last = $jar.map((row) => row.map(() => (Math.random() < 0.4 ? 1 + Math.floor(Math.random() * 3) : 0)))
+    $jar = $jar.map((row, i) => row.map((n, j) => n + $last[i]![j]!))
+  }
   // Total candies for the counter next to the button.
   const total = () => $jar.flat().reduce((a, b) => a + b, 0)
   // Treemap props:
   // - data={() => …}: builds the tree from $jar on every change. Rows use the default keys (`name` as label,
-  //   `children`, `value`), so no label / value / childrenOf props are needed.
+  //   `children`, `value`), so no label / value / childrenOf props are needed. `change` (the last handful) rides along
+  //   unused until colorValue="change" colors every tile by it (the flavors that just grew stand out) instead of by kind.
   // - format: counts as "N adet" (pieces) in labels, tooltip and data table.
-  // - radius={10} / padding={4}: rounder tiles with wider gaps than the defaults (4 / 2), for a softer, candy look.
+  // - padding={4}: wider gaps than the default 2 px, so each candy kind reads as its own box; radius rounds the tiles'
+  //   corners (default 4 px).
   // - animate={{ easing: "spring-wobbly", stagger: 40 }}: a bouncy spring, each tile 40 ms after the previous, so the
   //   jar wobbles as it refills. animate={false} switches motion off; reduced motion is honoured automatically.
   // - rootLabel="Kavanoz": the first crumb of the breadcrumb row ("Kavanoz" = jar); title: the SVG's accessible name.
@@ -38,7 +45,7 @@ export function CandyJar() {
       {/* The live candy count, read reactively through a function child. */}
       <span sx={{ color: "muted" }}>{() => `${total()} şeker`}</span>
     </div>
-    <Treemap data={() => KINDS.map((k, i) => ({ name: k.name, children: k.flavors.map((f, j) => ({ name: f, value: $jar[i]![j] })) }))}
-      format={(n: number) => `${n} adet`} radius={10} padding={4} animate={{ easing: "spring-wobbly", stagger: 40 }} rootLabel="Kavanoz" title="Şeker kavanozu" height={260} />
+    <Treemap data={() => KINDS.map((k, i) => ({ name: k.name, children: k.flavors.map((f, j) => ({ name: f, value: $jar[i]![j], change: $last[i]![j] })) }))}
+      format={(n: number) => `${n} adet`} padding={4} animate={{ easing: "spring-wobbly", stagger: 40 }} rootLabel="Kavanoz" title="Şeker kavanozu" height={260} />
   </div>
 }
