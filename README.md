@@ -208,7 +208,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [tabs](components/tabs) | WeekWeather.tsx, FileTabs.tsx, TabsLab.tsx, TabsLab.test.tsx |
 | [terminal](components/terminal) | FortuneTerminal.tsx, OrderConsole.tsx, TerminalLab.tsx, TerminalLab.test.tsx |
 | [testimonials](components/testimonials) | PetReviews.tsx, RestaurantWall.tsx, TestimonialsLab.tsx, TestimonialsLab.test.tsx |
-| [text-input](components/text-input) | HandlePicker.tsx, DeliveryStep.tsx, TextInputLab.tsx, TextInputLab.test.tsx |
+| [text-input](components/text-input) | GiftCode.tsx, CheckoutForm.tsx, TextInputLab.tsx, TextInputLab.test.tsx |
 | [textarea](components/textarea) | HaikuPad.tsx, SupportTicket.tsx, TextareaLab.tsx, TextareaLab.test.tsx |
 | [theme-editor](components/theme-editor) | OneColorTheme.tsx, BrandThemeSettings.tsx, ThemeEditorLab.tsx, ThemeEditorLab.test.tsx |
 | [theme-menu](components/theme-menu) | ThemePostcard.tsx, AccountBar.tsx, ThemeMenuLab.tsx, ThemeMenuLab.test.tsx |

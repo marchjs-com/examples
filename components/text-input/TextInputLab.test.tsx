@@ -60,3 +60,20 @@ test("durumlar: devre dışı, salt okunur, geçersiz + describedby, son ek", ()
   expect(s.get("#lab-invalid")?.getAttribute("aria-describedby")).toBe("lab-invalid-hint")
   expect(s.get(".lab-subdomain")?.textContent).toContain(".hadisosyal.com")
 })
+
+// The masked IBAN field: typing digits after "TR" groups them by four, the bound value is raw, and a complete, valid
+// IBAN reports "tamam" and counts one completion. The masked date holds an ISO value (maskValue="parsed").
+test("maske: IBAN gruplanır, ham değer bağlanır, tamamlanınca sayar; tarih ISO", async () => {
+  const s = renderTest(() => <TextInputLab />)
+  // the mask part loads with the first masked input
+  for (let i = 0; i < 50 && !s.get(".m-mask-mirror"); i++) await new Promise((r) => setTimeout(r, 10))
+  const field = await s.type("IBAN numarası", "TR330006100519786457841326")
+  await s.flush()
+  expect((field as HTMLInputElement).value).toBe("TR33 0006 1005 1978 6457 8413 26")
+  expect(s.text().includes("IBAN: 330006100519786457841326")).toBe(true)
+  expect(s.text().includes("tamam")).toBe(true)
+  expect(s.text().includes("tamamlandı: 1")).toBe(true)
+  await s.type("Doğum tarihi", "23.04.1990")
+  await s.flush()
+  expect(s.text().includes("doğum: 1990-04-23")).toBe(true)
+})
