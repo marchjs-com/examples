@@ -1,9 +1,21 @@
+// CoffeeQuiz: the real-life BranchingStory example.
+//
+// A "which beans suit you?" quiz on a coffee brand's site: two questions lead to one of three products, and each ending
+// carries an action (add to basket). Use this pattern for product finders and onboarding questionnaires: the passages
+// are plain data, the endings are the results, and `action` turns a result into a next step.
 import { BranchingStory } from "march/landing"
 import { Button, toast } from "march/ui"
 import { coffee } from "march/icons"
 
-// bir kahve markasının sitesinde "hangi çekirdek sana göre?" testi: her son bir ürüne çıkar
 export function CoffeeQuiz() {
+  // The props, in order:
+  // - start: the first passage id. label: the accessible name of the story. minHeight keeps the stage steady between
+  //   passages. transition="slide" changes passages with a slide (reduced motion swaps them without it).
+  // - labels: the story's own texts, reworded for a quiz: the start crumb, the restart button, the prefix of an
+  //   ending's name, and the endings counter as a function of how many were found and how many exist.
+  // - action: shown next to the restart button at an ending; here a Button with an icon that adds the product.
+  // - passages: questions have `choices` ({ label, note, to }); a passage with an `ending` is a result, and its `color`
+  //   tints that result. Every `to` must be the id of another passage.
   return <BranchingStory start="sabah" label="Kahve testi" transition="slide" minHeight="16rem"
     labels={{ start: "Başla", restart: "Testi yeniden çöz", endingPrefix: "Sana göre: ", endings: (n: number, total: number) => `${total} çekirdekten ${n} tanesini keşfettin` }}
     action={<Button icon={coffee} on:click={() => toast("Sepete eklendi")}>Sepete ekle</Button>}
