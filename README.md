@@ -14,7 +14,7 @@ The showcase reads them pinned to a commit (`cdn.jsdelivr.net/gh/marchjs-com/exa
 always shows the examples written for it. It loads the root `ide.json` once, in the background, when the site opens.
 After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails when the root file is out of date).
 
-## Pages (203)
+## Pages (226)
 
 | Page | Files |
 | --- | --- |
@@ -36,11 +36,14 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [before-after](components/before-after) | MondayMorning.tsx, PhotoFilter.tsx, BeforeAfterLab.tsx, BeforeAfterLab.test.tsx |
 | [bottom-nav](components/bottom-nav) | MoodBar.tsx, SocialTabs.tsx, BottomNavLab.tsx, BottomNavLab.test.tsx |
 | [bottom-right-controls](components/bottom-right-controls) | HelpBubble.tsx, FeedbackCorner.tsx, BottomRightControlsLab.tsx, BottomRightControlsLab.test.tsx |
+| [box-plot](components/box-plot) | PetNaps.tsx, ApiLatency.tsx, BoxPlotLab.tsx, BoxPlotLab.test.tsx |
 | [branching-story](components/branching-story) | MysteryDoor.tsx, CoffeeQuiz.tsx, BranchingStoryLab.tsx, BranchingStoryLab.test.tsx |
 | [breadcrumbs](components/breadcrumbs) | TreasureTrail.tsx, DriveBrowser.tsx, BreadcrumbsLab.tsx, BreadcrumbsLab.test.tsx |
+| [bullet-chart](components/bullet-chart) | HabitTracker.tsx, SalesTeam.tsx, BulletChartLab.tsx, BulletChartLab.test.tsx |
 | [button](components/button) | MoodPicker.tsx, SaveBar.tsx, ButtonLab.tsx, ButtonLab.test.tsx |
 | [button-group](components/button-group) | FontSizer.tsx, FileToolbar.tsx, ButtonGroupLab.tsx, ButtonGroupLab.test.tsx |
 | [calendar](components/calendar) | Holidays.tsx, Booking.tsx, CalendarLab.tsx, CalendarLab.test.tsx |
+| [candlestick-chart](components/candlestick-chart) | MoodCandles.tsx, CoinWatch.tsx, CandlestickChartLab.tsx, CandlestickChartLab.test.tsx |
 | [card](components/card) | FlipQuote.tsx, PlanCard.tsx, CardLab.tsx, CardLab.test.tsx |
 | [carousel](components/carousel) | EmojiReel.tsx, ProductShelf.tsx, CarouselLab.tsx, CarouselLab.test.tsx |
 | [chat-bubble](components/chat-bubble) | RobotChat.tsx, GroupChat.tsx, ChatBubbleLab.tsx, ChatBubbleLab.test.tsx |
@@ -53,6 +56,8 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [chip](components/chip) | PizzaBuilder.tsx, IssueFilters.tsx, ChipLab.tsx, ChipLab.test.tsx |
 | [choice-picker](components/choice-picker) | CoffeeSize.tsx, DeliveryStep.tsx, ChoicePickerLab.tsx, ChoicePickerLab.test.tsx |
 | [choice-variants](components/choice-variants) | GymDays.tsx, PlanPicker.tsx, ChoiceVariantsLab.tsx, ChoiceVariantsLab.test.tsx |
+| [chord-chart](components/chord-chart) | FriendChat.tsx, TeamHandoffs.tsx, ChordChartLab.tsx, ChordChartLab.test.tsx |
+| [choropleth-map](components/choropleth-map) | CoffeeMap.tsx, SalesByProvince.tsx, ChoroplethMapLab.tsx, ChoroplethMapLab.test.tsx |
 | [clamp-text](components/clamp-text) | SpoilerReview.tsx, ReviewList.tsx, ClampTextLab.tsx, ClampTextLab.test.tsx |
 | [code-view](components/code-view) | TypingCode.tsx, ApiSnippet.tsx, CodeViewLab.tsx, CodeViewLab.test.tsx |
 | [color](components/color) | MoodRing.tsx, BrandColorSettings.tsx, ColorPickerLab.tsx, ColorPickerLab.test.tsx |
@@ -96,12 +101,14 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [font](components/font) | ShopSign.tsx, BlogTypography.tsx, FontPickerLab.tsx, FontPickerLab.test.tsx |
 | [format-toolbar](components/format-toolbar) | NeonSign.tsx, CommentBox.tsx, FormatToolbarLab.tsx, FormatToolbarLab.test.tsx |
 | [forms-code](components/forms-code) | VaultLock.tsx, VerifyPhone.tsx, CodeInputLab.tsx, CodeInputLab.test.tsx |
+| [funnel-chart](components/funnel-chart) | IdeaFunnel.tsx, SignupFunnel.tsx, FunnelChartLab.tsx, FunnelChartLab.test.tsx |
 | [gantt](components/gantt) | GardenPlan.tsx, EventPlanning.tsx, GanttLab.tsx, GanttLab.test.tsx |
 | [gauge](components/gauge) | RallyCar.tsx, ServerHealth.tsx, GaugeLab.tsx, GaugeLab.test.tsx |
 | [gradient](components/gradient) | SkyPainter.tsx, ProfileCover.tsx, GradientEditorLab.tsx, GradientEditorLab.test.tsx |
 | [grid](components/grid) | ColorWall.tsx, ProductList.tsx, GridLab.tsx, GridLab.test.tsx |
 | [heatmap](components/heatmap) | WaterHabit.tsx, ServerLoad.tsx, HeatmapLab.tsx, HeatmapLab.test.tsx |
 | [hero](components/hero) | LaunchCountdown.tsx, CafeHero.tsx, HeroLab.tsx, HeroLab.test.tsx |
+| [histogram](components/histogram) | DiceRolls.tsx, PageLoadTimes.tsx, HistogramLab.tsx, HistogramLab.test.tsx |
 | [honest-compare](components/honest-compare) | CatOrDog.tsx, NotesAppCompare.tsx, HonestCompareLab.tsx, HonestCompareLab.test.tsx |
 | [horizontal-scroll](components/horizontal-scroll) | ColorStrip.tsx, CaseStudies.tsx, HorizontalScrollLab.tsx, HorizontalScrollLab.test.tsx |
 | [icon-button](components/icon-button) | DayNight.tsx, ShareBar.tsx, IconButtonLab.tsx, IconButtonLab.test.tsx |
@@ -138,6 +145,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [multi-select](components/multi-select) | PizzaBuilder.tsx, PublishPost.tsx, MultiSelectLab.tsx, MultiSelectLab.test.tsx |
 | [nav-menu](components/nav-menu) | PlanetGuide.tsx, ShopAdmin.tsx, NavMenuLab.tsx, NavMenuLab.test.tsx |
 | [nav-sidebar](components/nav-sidebar) | QuestMenu.tsx, AdminShell.tsx, NavSidebarLab.tsx, NavSidebarLab.test.tsx |
+| [network-graph](components/network-graph) | Constellation.tsx, ModuleDeps.tsx, NetworkGraphLab.tsx, NetworkGraphLab.test.tsx |
 | [network-throttle](components/network-throttle) | LoadingRace.tsx, OfflineFeed.tsx, NetworkThrottleLab.tsx, NetworkThrottleLab.test.tsx |
 | [newsletter](components/newsletter) | SecretClub.tsx, BookstoreBulletin.tsx, NewsletterLab.tsx, NewsletterLab.test.tsx |
 | [not-for-you](components/not-for-you) | GrumpyCat.tsx, MealKitFit.tsx, NotForYouLab.tsx, NotForYouLab.test.tsx |
@@ -169,6 +177,8 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [project-grid](components/project-grid) | PetShelter.tsx, StudioWork.tsx, ProjectGridLab.tsx, ProjectGridLab.test.tsx |
 | [property-grid](components/property-grid) | AvatarMaker.tsx, NotificationSettings.tsx, PropertyGridLab.tsx, PropertyGridLab.test.tsx |
 | [pull-to-refresh](components/pull-to-refresh) | FortuneCookie.tsx, NewsFeed.tsx, PullToRefreshLab.tsx, PullToRefreshLab.test.tsx |
+| [radar-chart](components/radar-chart) | CoffeeProfile.tsx, LaptopCompare.tsx, RadarChartLab.tsx, RadarChartLab.test.tsx |
+| [radial-bar-chart](components/radial-bar-chart) | ActivityRings.tsx, ServerLoad.tsx, RadialBarChartLab.tsx, RadialBarChartLab.test.tsx |
 | [radio-group](components/radio-group) | CoffeeSize.tsx, ShippingStep.tsx, RadioGroupLab.tsx, RadioGroupLab.test.tsx |
 | [rating](components/rating) | CoffeeStrength.tsx, OrderReview.tsx, RatingLab.tsx, RatingLab.test.tsx |
 | [reaction-picker](components/reaction-picker) | MoodMeter.tsx, MessageReactions.tsx, ReactionPickerLab.tsx, ReactionPickerLab.test.tsx |
@@ -178,6 +188,8 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [roadmap](components/roadmap) | PizzaTracker.tsx, ProductRoadmap.tsx, RoadmapLab.tsx, RoadmapLab.test.tsx |
 | [routing](components/routing) | BookClub.tsx, TeamInbox.tsx, RoutingLab.tsx, RoutingLab.test.tsx |
 | [row-tools](components/row-tools) | FlavorRanking.tsx, DeliveryRoute.tsx, RowToolsLab.tsx, RowToolsLab.test.tsx |
+| [sankey-chart](components/sankey-chart) | CoffeeBar.tsx, SignupFunnel.tsx, SankeyChartLab.tsx, SankeyChartLab.test.tsx |
+| [scatter-chart](components/scatter-chart) | FireflyJar.tsx, AdSpend.tsx, ScatterChartLab.tsx, ScatterChartLab.test.tsx |
 | [scheduler](components/scheduler) | MoonPhases.tsx, ClinicBookings.tsx, SchedulerLab.tsx, SchedulerLab.test.tsx |
 | [schema](components/schema) | PizzaOrder.tsx, SignUp.tsx, FormLab.tsx, FormLab.test.tsx |
 | [scroll-progress](components/scroll-progress) | ThickBar.tsx, ArticleProgress.tsx, ScrollProgressLab.tsx, ScrollProgressLab.test.tsx |
@@ -214,12 +226,14 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [story-progress](components/story-progress) | Countdown.tsx, Onboarding.tsx, StoryProgressLab.tsx, StoryProgressLab.test.tsx |
 | [story-ring](components/story-ring) | FriendsTray.tsx, MyStory.tsx, StoryRingLab.tsx, StoryRingLab.test.tsx |
 | [story-viewer](components/story-viewer) | ColorDiary.tsx, StoryTray.tsx, StoryViewerLab.tsx, StoryViewerLab.test.tsx |
+| [stream-graph](components/stream-graph) | MoodRiver.tsx, NewsTopics.tsx, StreamGraphLab.tsx, StreamGraphLab.test.tsx |
+| [sunburst-chart](components/sunburst-chart) | Playlist.tsx, DiskUsage.tsx, SunburstChartLab.tsx, SunburstChartLab.test.tsx |
 | [swatch](components/swatch) | TShirtPainter.tsx, ProductVariant.tsx, SwatchLab.tsx, SwatchLab.test.tsx |
 | [table](components/table) | Snacks.tsx, Members.tsx, TableLab.tsx, TableLab.test.tsx |
 | [tabs](components/tabs) | WeekWeather.tsx, FileTabs.tsx, TabsLab.tsx, TabsLab.test.tsx |
 | [terminal](components/terminal) | FortuneTerminal.tsx, OrderConsole.tsx, TerminalLab.tsx, TerminalLab.test.tsx |
 | [testimonials](components/testimonials) | PetReviews.tsx, RestaurantWall.tsx, TestimonialsLab.tsx, TestimonialsLab.test.tsx |
-| [text-input](components/text-input) | HandlePicker.tsx, DeliveryStep.tsx, TextInputLab.tsx, TextInputLab.test.tsx |
+| [text-input](components/text-input) | GiftCode.tsx, CheckoutForm.tsx, TextInputLab.tsx, TextInputLab.test.tsx |
 | [textarea](components/textarea) | HaikuPad.tsx, SupportTicket.tsx, TextareaLab.tsx, TextareaLab.test.tsx |
 | [theme-editor](components/theme-editor) | OneColorTheme.tsx, BrandThemeSettings.tsx, ThemeEditorLab.tsx, ThemeEditorLab.test.tsx |
 | [theme-menu](components/theme-menu) | ThemePostcard.tsx, AccountBar.tsx, ThemeMenuLab.tsx, ThemeMenuLab.test.tsx |
@@ -232,11 +246,13 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [toggle](components/toggle) | AirplaneMode.tsx, PrivacySettings.tsx, ToggleLab.tsx, ToggleLab.test.tsx |
 | [tooltip](components/tooltip) | PeriodicTable.tsx, EditorTools.tsx, TooltipLab.tsx, TooltipLab.test.tsx |
 | [tree-view](components/tree-view) | RecipeBook.tsx, DriveBrowser.tsx, TreeViewLab.tsx, TreeViewLab.test.tsx |
+| [treemap](components/treemap) | CandyJar.tsx, DiskUsage.tsx, TreemapLab.tsx, TreemapLab.test.tsx |
 | [typing-indicator](components/typing-indicator) | NightOwls.tsx, ChatFooter.tsx, TypingIndicatorLab.tsx, TypingIndicatorLab.test.tsx |
 | [undo-redo](components/undo-redo) | EmojiPainter.tsx, TaskBoard.tsx, UndoRedoLab.tsx, UndoRedoLab.test.tsx |
 | [verified-mark](components/verified-mark) | ProfileName.tsx, CommentList.tsx, VerifiedMarkLab.tsx, VerifiedMarkLab.test.tsx |
 | [video-background](components/video-background) | MoodSwitch.tsx, HotelHero.tsx, VideoBackgroundLab.tsx, VideoBackgroundLab.test.tsx |
 | [virtual-list](components/virtual-list) | StarCount.tsx, ChatHistory.tsx, VirtualListLab.tsx, VirtualListLab.test.tsx |
+| [waterfall-chart](components/waterfall-chart) | PiggyBank.tsx, ProfitBridge.tsx, WaterfallChartLab.tsx, WaterfallChartLab.test.tsx |
 | [waveform](components/waveform) | VoiceNote.tsx, PodcastPlayer.tsx, WaveformLab.tsx, WaveformLab.test.tsx |
 | [web-reveal](components/web-reveal) | EmojiParade.tsx, WhyUs.tsx, RevealLab.tsx, RevealLab.test.tsx |
 | [wizard](components/wizard) | CoffeeWizard.tsx, EventSignup.tsx, WizardLab.tsx, WizardLab.test.tsx |

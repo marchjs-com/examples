@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Akışlar: düğümler sütunlarda, şeritler değer kalınlığında; bir düğüm kendi akışını vurgular.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "CoffeeBar.tsx",
+			"src": "examples://components/sankey-chart/CoffeeBar.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SignupFunnel.tsx",
+			"src": "examples://components/sankey-chart/SignupFunnel.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SankeyChartLab.tsx",
+			"src": "examples://components/sankey-chart/SankeyChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SankeyChartLab.test.tsx",
+			"src": "examples://components/sankey-chart/SankeyChartLab.test.tsx"
+		}
+	]
+}

@@ -1,9 +1,16 @@
+// HonestCompareLab: the full-featured HonestCompare example; it uses every prop at least once.
+//
+// Props shown here: columns, rows (with notes), us, caption and showCaption, summary, filter, tags, labels (every text),
+// renderCell and class. The switches above the table turn parts on and off so you can try them.
+// Use it as a reference when you need one option: find the prop below and copy the line.
+// HonestCompareLab.test.tsx (next to this file) checks this example; it runs in MarchIDE's Tests tab when you save.
 import { HonestCompare } from "march/landing"
 import { Toggle, Card } from "march/ui"
 
-// HonestCompare'in bütün özellikleri bir arada: sütunlar, satırlar (not ile), kendi sütunun kimliği (us), tablo başlığı
-// ve görünürlüğü, özet, süzgeç düğmesi, etiketler, bütün metinler (labels), kendi hücre çizimin (renderCell) ve sınıf
+// The products compared; the id "biz" is our own column (it is given to `us` below).
 const COLUMNS = [{ id: "biz", name: "Bisiklet" }, { id: "araba", name: "Araba" }, { id: "otobus", name: "Otobüs" }]
+// Rows: true / false / "partial" are scored, other text (the last row) is shown but not scored. `note` is a longer
+// explanation kept visible on rows where we are behind.
 const ROWS = [
   { label: "Trafikte beklemez", values: { biz: true, araba: false, otobus: "partial" as const } },
   { label: "Yağmurda kuru tutar", values: { biz: false, araba: true, otobus: true }, note: "Yağmurluk şart. Şemsiyeli bisiklet denemesi sürüyor." },
@@ -13,12 +20,14 @@ const ROWS = [
 ]
 
 export function HonestCompareLab() {
+  // One boolean per switch.
   let $summary = true
   let $filter = true
   let $tags = true
   let $caption = true
   let $words = false
   return <div sx={{ flex: "col", gap: 3 }}>
+    {/* The switches: each one drives one prop below. */}
     <Card>
       <div sx={{ flex: ["row", "wrap"], gap: 3 }}>
         <Toggle label="Özet" bind:value={$summary} />
@@ -28,6 +37,13 @@ export function HonestCompareLab() {
         <Toggle label="Yazıyla hücreler" bind:value={$words} />
       </div>
     </Card>
+    {/* The table sits in a `{() => ...}` block that runs again when a switch changes, so it is drawn again with the new props.
+        - us="biz": the id of our column. columns / rows: the data. class: a hook for tests and CSS.
+        - caption: the table's name; showCaption: show it or keep it for screen readers only.
+        - summary: the counts line. filter: the "only where we are behind" toggle. tags: the ahead / behind tags beside the labels.
+        - labels: replaces every text (yes / no / partly, tags, the table's region name, the counts function, the toggle texts).
+        - renderCell(value, info): draw a cell yourself; return undefined to keep the default mark. `info.us` says whether the
+          cell is in our column. */}
     {() => { const caption = $caption, summary = $summary, filter = $filter, tags = $tags, words = $words; return <HonestCompare class="lab-hc" us="biz" columns={COLUMNS} rows={ROWS}
       caption="İşe nasıl gidelim?" showCaption={caption} summary={summary} filter={filter} tags={tags}
       labels={{ yes: "Evet", no: "Hayır", partly: "Biraz", ahead: "Önde", behind: "Geride", region: "Ulaşım tablosu",

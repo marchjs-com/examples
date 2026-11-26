@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "Gün × saat ya da hafta takvimi; tema vurgusunun tonlarında yoğunluk.",
+	"description": "Gün × saat ya da yıl takvimi; ay ve gün etiketleri, düzey açıklaması, hücreler dalga gibi renklenir.",
 	"sources": [
 		{
 			"type": "code",

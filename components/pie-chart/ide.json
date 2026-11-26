@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "Bütünün payları; halkanın ortasında toplam, dilimler odaklanır ve yeni açılara döner.",
+	"description": "Bütünün payları; dilimler açılır, yeni açılara döner, etkin dilim dışarı çıkar.",
 	"sources": [
 		{
 			"type": "code",

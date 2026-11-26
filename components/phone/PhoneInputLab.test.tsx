@@ -1,7 +1,18 @@
+// Tests for PhoneInputLab. They run in MarchIDE's Tests tab every time you save.
+//
+// How these tests are written (march/testing):
+// - renderTest(() => <PhoneInputLab />) mounts the component in a fresh, isolated root and returns a handle `s`.
+// - s.find(name) looks up an element by its accessible name (null when missing), s.get(selector) uses a CSS selector,
+//   s.text() is all visible text, and s.type(nameOrSelector, text) types into a field like a user and waits until the view
+//   has updated, which is why the tests that type are async and await it.
+// - The tests check what a user or a screen reader can observe (the stored value the Lab prints, aria and input attributes)
+//   rather than internal state, so they keep passing when the component's internals change.
+// To adapt them: copy one test, change the name, the text you type or the expected value.
 import { test, expect, renderTest } from "march/testing"
 import { PhoneInputLab } from "./PhoneInputLab.tsx"
 
-// PhoneInputLab'in testleri: kaydedince Testler sekmesinde çalışır
+// With country="+90" a national number is stored with its calling code: the leading 0, the spaces and the dashes are
+// dropped, so "0532 111-22-33" becomes "+905321112233". The code is also visible as the field's prefix.
 test("ulusal numara ülke koduyla saklanır: baştaki 0, boşluk ve tireler gider", async () => {
   const s = renderTest(() => <PhoneInputLab />)
   await s.type("Türkiye numarası", "0532 111-22-33")
@@ -9,6 +20,8 @@ test("ulusal numara ülke koduyla saklanır: baştaki 0, boşluk ve tireler gide
   expect(s.text().includes("+90")).toBe(true)
 })
 
+// Without a country, "00" at the start means "+" (the international prefix), and a typed "+" is kept. Punctuation is
+// removed in both cases.
 test("ülke kodu yokken 00 + olur, + korunur", async () => {
   const s = renderTest(() => <PhoneInputLab />)
   await s.type("Uluslararası numara", "0049 151 2345 6789")
@@ -17,6 +30,9 @@ test("ülke kodu yokken 00 + olur, + korunur", async () => {
   expect(s.text().includes("Uluslararası: +442079460000")).toBe(true)
 })
 
+// The form field: it starts valid; the attributes of the props reach the input (type="tel" for the phone keypad, required,
+// name, autocomplete, aria-describedby). After typing a short number the field is marked invalid (aria-invalid) and the
+// Lab's hint text says so.
 test("eksik numara geçersiz; form öznitelikleri yerinde", async () => {
   const s = renderTest(() => <PhoneInputLab />)
   const el = s.get("#lab-office-phone") as HTMLInputElement
@@ -31,6 +47,8 @@ test("eksik numara geçersiz; form öznitelikleri yerinde", async () => {
   expect(s.text().includes("Numara eksik")).toBe(true)
 })
 
+// prefix and suffix render around the input (an icon and a text, inside the shared affix wrapper); disabled and readonly
+// reach the input; for a readonly number the calling code is in the prefix and the field shows only the national part.
 test("önek, sonek, devre dışı ve salt okunur", () => {
   const s = renderTest(() => <PhoneInputLab />)
   const pbx = s.find("Santral") as HTMLInputElement
@@ -38,6 +56,6 @@ test("önek, sonek, devre dışı ve salt okunur", () => {
   expect(pbx.closest(".m-affix")?.querySelector("svg")).not.toBe(null)
   expect(s.find("Kilitli numara")?.hasAttribute("disabled")).toBe(true)
   expect(s.find("Salt okunur numara")?.hasAttribute("readonly")).toBe(true)
-  // ülke kodu önekte; alan ulusal kısmı gösterir
+  // the calling code is in the prefix; the field shows the national part
   expect((s.find("Salt okunur numara") as HTMLInputElement).value).toBe("2079460000")
 })

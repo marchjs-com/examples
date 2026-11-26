@@ -1,11 +1,24 @@
+// ArchitectureCase: the real-life ProjectDetail example.
+//
+// What it shows: the page of one project of an architecture office: facts (role, client, year, category, services),
+// the story, a gallery that opens in a Lightbox, a press link and a back button, with the page's labels in Turkish.
+// When to use this pattern: a portfolio or case-study page; the same project object can feed a ProjectGrid card.
+//
+// Accessibility: an article with one h1; the facts are a description list; gallery images are buttons that open the
+// Lightbox (focus returns on close). Animation: the entrance (reveal) runs on the motion engine, so reduced motion,
+// global speed and "Stop all" apply; `reveal={false}` turns it off.
+
 import { ProjectDetail } from "march/landing"
 import { toast } from "march/ui"
 
-// bir mimarlık ofisinin proje sayfası: künye, hizmetler, hikâye, büyütülebilen galeri ve basın bağlantısı
-// bir projenin biçimi (kapak ve galeri: görsel ya da düğüm)
+// The shape of a project: the cover and the gallery items are either an image ({ src, alt, width, height }) or a node.
+// An image with its size, so the layout reserves the space before it loads.
 type Picture = { src: string; alt: string; width: number; height: number }
+// What a ProjectGrid card needs: id, title and a cover; the rest is optional.
 type Project = { id: string; title: string; category?: string; year?: number | string; summary?: string; cover: Node | Picture }
+// What the detail page adds: role, client, services, the story (body), a gallery and links.
 type ProjectDetails = Project & { role?: string; client?: string; services?: string[]; body?: unknown; gallery?: (Node | Picture)[]; links?: { label: string; href: string }[] }
+// The data of this project. Texts here are content, so they stay Turkish.
 const PROJECT: ProjectDetails = {
   id: "bag-evi", title: "Bağ Evi, Urla", category: "Konut", year: 2025,
   summary: "Zeytin ağaçlarının arasında, güneşi takip eden tek katlı bir ev.",
@@ -23,6 +36,8 @@ const PROJECT: ProjectDetails = {
 }
 
 export function ArchitectureCase() {
+  // - project: the data above. onBack: giving it shows the back button.
+  // - labels: the page's own texts (back button and the names of the facts); the others keep the built-in text.
   return <ProjectDetail project={PROJECT} onBack={() => toast("Projeler listesine dönülüyor")}
     labels={{ back: "Tüm projeler", role: "Rol", client: "Müşteri", year: "Yıl", category: "Tür", services: "Hizmetler" }} />
 }

@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Gruplar arası alışveriş: çevrede yaylar, aralarında şeritler; bir grubun üstüne gel, kendi akışı kalsın.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "FriendChat.tsx",
+			"src": "examples://components/chord-chart/FriendChat.tsx"
+		},
+		{
+			"type": "code",
+			"name": "TeamHandoffs.tsx",
+			"src": "examples://components/chord-chart/TeamHandoffs.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ChordChartLab.tsx",
+			"src": "examples://components/chord-chart/ChordChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ChordChartLab.test.tsx",
+			"src": "examples://components/chord-chart/ChordChartLab.test.tsx"
+		}
+	]
+}

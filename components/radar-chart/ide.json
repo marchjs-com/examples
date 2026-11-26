@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Eksenler çevrede, seriler dolu çokgenler; şekiller merkezden büyür ve yeni değerlere dönüşür.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "CoffeeProfile.tsx",
+			"src": "examples://components/radar-chart/CoffeeProfile.tsx"
+		},
+		{
+			"type": "code",
+			"name": "LaptopCompare.tsx",
+			"src": "examples://components/radar-chart/LaptopCompare.tsx"
+		},
+		{
+			"type": "code",
+			"name": "RadarChartLab.tsx",
+			"src": "examples://components/radar-chart/RadarChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "RadarChartLab.test.tsx",
+			"src": "examples://components/radar-chart/RadarChartLab.test.tsx"
+		}
+	]
+}

@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "Değer, önceki döneme göre değişim (iyi yeşil, kötü kırmızı) ve eğilim çizgisi.",
+	"description": "Değer sayarak gelir, önceki döneme göre değişim (iyi yeşil, kötü kırmızı) ve eğilim çizgisi.",
 	"sources": [
 		{
 			"type": "code",

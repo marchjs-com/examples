@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "Zaman, sayı ya da kategori ekseni; birden çok seri, sürükleyerek yakınlaştırma, ← → ile noktalar.",
+	"description": "Zaman, sayı ya da kategori ekseni; eğriler, işaretler, ikinci eksen, referans çizgileri, canlı pencere, aralık gezgini.",
 	"sources": [
 		{
 			"type": "code",

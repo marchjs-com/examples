@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "İki sayı ekseninde noktalar; kabarcık boyu, seriye göre renk ve simge, eğilim çizgisi, noktalar kayarak yer değiştirir.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "FireflyJar.tsx",
+			"src": "examples://components/scatter-chart/FireflyJar.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AdSpend.tsx",
+			"src": "examples://components/scatter-chart/AdSpend.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ScatterChartLab.tsx",
+			"src": "examples://components/scatter-chart/ScatterChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ScatterChartLab.test.tsx",
+			"src": "examples://components/scatter-chart/ScatterChartLab.test.tsx"
+		}
+	]
+}

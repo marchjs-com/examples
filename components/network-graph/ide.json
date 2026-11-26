@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Düğümler ve bağlantılar: kuvvetle yerleşen ağ, sürükle ve sabitle, yakınlaş, komşuları vurgula, oklarla gez.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "Constellation.tsx",
+			"src": "examples://components/network-graph/Constellation.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ModuleDeps.tsx",
+			"src": "examples://components/network-graph/ModuleDeps.tsx"
+		},
+		{
+			"type": "code",
+			"name": "NetworkGraphLab.tsx",
+			"src": "examples://components/network-graph/NetworkGraphLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "NetworkGraphLab.test.tsx",
+			"src": "examples://components/network-graph/NetworkGraphLab.test.tsx"
+		}
+	]
+}

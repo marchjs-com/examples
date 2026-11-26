@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "Sıralı yatay çubuklar: en çok ziyaret edilen sayfalar, ülkeler, şarkılar.",
+	"description": "Sıralı yatay çubuklar: en çok ziyaret edilen sayfalar, ülkeler, şarkılar; sıra değişince satırlar kayar.",
 	"sources": [
 		{
 			"type": "code",

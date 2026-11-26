@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "İç içe halkalarda çubuklar; tam daire ya da yay, halkalar sırayla döner.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "ActivityRings.tsx",
+			"src": "examples://components/radial-bar-chart/ActivityRings.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ServerLoad.tsx",
+			"src": "examples://components/radial-bar-chart/ServerLoad.tsx"
+		},
+		{
+			"type": "code",
+			"name": "RadialBarChartLab.tsx",
+			"src": "examples://components/radial-bar-chart/RadialBarChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "RadialBarChartLab.test.tsx",
+			"src": "examples://components/radial-bar-chart/RadialBarChartLab.test.tsx"
+		}
+	]
+}
