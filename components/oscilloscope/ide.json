@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Sesin dalga biçimi canlı: tetiklenen iz, fosfor izi, ölçek ızgarası, XY Lissajous; modern ya da retro CRT görünüm.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "RetroSynth.tsx",
+			"src": "examples://components/oscilloscope/RetroSynth.tsx"
+		},
+		{
+			"type": "code",
+			"name": "MicCheck.tsx",
+			"src": "examples://components/oscilloscope/MicCheck.tsx"
+		},
+		{
+			"type": "code",
+			"name": "OscilloscopeLab.tsx",
+			"src": "examples://components/oscilloscope/OscilloscopeLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "OscilloscopeLab.test.tsx",
+			"src": "examples://components/oscilloscope/OscilloscopeLab.test.tsx"
+		}
+	]
+}

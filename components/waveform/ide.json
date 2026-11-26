@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Bir sesin çubukları: sesli mesaj, podcast; çalınan kısım renkli, bölümler, basıp atlama.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "VoiceNote.tsx",
+			"src": "examples://components/waveform/VoiceNote.tsx"
+		},
+		{
+			"type": "code",
+			"name": "PodcastPlayer.tsx",
+			"src": "examples://components/waveform/PodcastPlayer.tsx"
+		},
+		{
+			"type": "code",
+			"name": "WaveformLab.tsx",
+			"src": "examples://components/waveform/WaveformLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "WaveformLab.test.tsx",
+			"src": "examples://components/waveform/WaveformLab.test.tsx"
+		}
+	]
+}

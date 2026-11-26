@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Stüdyo tipi LED seviye ölçer; sayı ya da canlı ses, mono / stereo, tepe ve kırpılma ışığı.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "MixingDesk.tsx",
+			"src": "examples://components/level-meter/MixingDesk.tsx"
+		},
+		{
+			"type": "code",
+			"name": "MicCheck.tsx",
+			"src": "examples://components/level-meter/MicCheck.tsx"
+		},
+		{
+			"type": "code",
+			"name": "LevelMeterLab.tsx",
+			"src": "examples://components/level-meter/LevelMeterLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "LevelMeterLab.test.tsx",
+			"src": "examples://components/level-meter/LevelMeterLab.test.tsx"
+		}
+	]
+}
