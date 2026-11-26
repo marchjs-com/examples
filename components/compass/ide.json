@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Pusula: dönen gül ya da dönen ibre, yerel dilde yön harfleri, hedef rota işareti, yuvarlanan \"045° KD\" göstergesi.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "TreasureHunt.tsx",
+			"src": "examples://components/compass/TreasureHunt.tsx"
+		},
+		{
+			"type": "code",
+			"name": "WindStation.tsx",
+			"src": "examples://components/compass/WindStation.tsx"
+		},
+		{
+			"type": "code",
+			"name": "CompassLab.tsx",
+			"src": "examples://components/compass/CompassLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "CompassLab.test.tsx",
+			"src": "examples://components/compass/CompassLab.test.tsx"
+		}
+	]
+}

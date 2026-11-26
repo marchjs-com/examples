@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Yaprak tabela (split-flap): her hücre harf makarasını kanat kanat çevirir; kalkış panosu, Türkçe büyük harf, kendi makaranız.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "WordFlip.tsx",
+			"src": "examples://components/split-flap/WordFlip.tsx"
+		},
+		{
+			"type": "code",
+			"name": "Departures.tsx",
+			"src": "examples://components/split-flap/Departures.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SplitFlapLab.tsx",
+			"src": "examples://components/split-flap/SplitFlapLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SplitFlapLab.test.tsx",
+			"src": "examples://components/split-flap/SplitFlapLab.test.tsx"
+		}
+	]
+}

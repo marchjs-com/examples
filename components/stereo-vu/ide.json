@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Stereo VU çifti: tek panelde sol / sağ ibreli VU ölçer, tepe ışıkları, 0 VU referansı; metal, koyu ya da ahşap panel.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "TapeDeck.tsx",
+			"src": "examples://components/stereo-vu/TapeDeck.tsx"
+		},
+		{
+			"type": "code",
+			"name": "PodcastMonitor.tsx",
+			"src": "examples://components/stereo-vu/PodcastMonitor.tsx"
+		},
+		{
+			"type": "code",
+			"name": "StereoVuLab.tsx",
+			"src": "examples://components/stereo-vu/StereoVuLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "StereoVuLab.test.tsx",
+			"src": "examples://components/stereo-vu/StereoVuLab.test.tsx"
+		}
+	]
+}

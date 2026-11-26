@@ -56,3 +56,15 @@ test("kendi göstergesi ve kapalı parçalar", () => {
   expect(s.get(".lab-bare .m-gauge")!.getAttribute("class")).toContain("m-gauge-bare")
   expect(s.get(".lab-bare .m-gauge-readout")).toBeFalsy()
 })
+
+// Proves the multi-needle and full-circle features: the extra needle is drawn and spoken with its label, and the
+// full-circle dial shows one mark where 60 meets 0 (12 labels, not 13) with the scale turned by `turn`.
+test("ek ibre okunur; tam daire 12 etiketli ve dönen ölçekli", async () => {
+  const s = renderTest(() => <GaugeLab />)
+  expect(s.get(".lab-multi .m-gauge-needle.is-extra")).toBeTruthy()
+  await s.wait(300)
+  expect(s.get(".lab-multi .m-gauge")!.getAttribute("aria-valuetext")).toContain("Ortalama")
+  expect(s.all(".lab-circle .m-gauge-label").length).toBe(12)
+  expect(s.get(".lab-circle .m-gauge-scale")!.getAttribute("transform")).toContain("rotate(-40")
+  expect(s.get(".lab-circle .m-gauge-inlay b")!.textContent).toBe("360°")
+})

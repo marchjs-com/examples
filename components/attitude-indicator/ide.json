@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Yapay ufuk: yatışla dönen, yunuslamayla kayan gök ve yer, yunuslama merdiveni, yatış ölçeği, sabit uçak simgesi.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "PaperPlane.tsx",
+			"src": "examples://components/attitude-indicator/PaperPlane.tsx"
+		},
+		{
+			"type": "code",
+			"name": "DroneTelemetry.tsx",
+			"src": "examples://components/attitude-indicator/DroneTelemetry.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AttitudeIndicatorLab.tsx",
+			"src": "examples://components/attitude-indicator/AttitudeIndicatorLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AttitudeIndicatorLab.test.tsx",
+			"src": "examples://components/attitude-indicator/AttitudeIndicatorLab.test.tsx"
+		}
+	]
+}

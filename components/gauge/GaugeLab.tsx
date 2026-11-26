@@ -8,7 +8,8 @@ import { audioSource } from "march/audio"
 //
 // Props shown below: value (a live accessor), source (audio), min, max, zones, redline, peak, peakHold, label, unit,
 // caption, format, variant (speedometer, tachometer, half, vu), size, sweep, ticks, needle, readout (true, "odometer",
-// a node, a function, false), parts, color, motion, onPeak, onRedline, class.
+// a node, a function, false), parts, color, motion, onPeak, onRedline, class, and the dial features the other
+// instruments are built on: needles, start, wrap, turn, inlay.
 export function GaugeLab() {
   // `$` variables are reactive: every gauge that reads $v moves when a button changes it. There is no setState and no
   // re-render of the whole tree; only the needle and the readout update.
@@ -75,6 +76,19 @@ export function GaugeLab() {
       {/* 6. The barest gauge: no readout, face, caption or ticks; a small arc and needle for a table row or beside a
           label. The accessible value is still there, because it lives on the root, not in the readout. */}
       <span class="lab-bare"><Gauge value={$v} readout={false} size={140} parts={{ face: false, caption: false }} ticks={false} /></span>
+    </div>
+    <div sx={{ flex: ["row", "wrap", "center"], gap: 3 }}>
+      {/* 7. Several needles: `needles` adds needles next to `value`, each with its own value, colour, label, length,
+          width, tip, tail and motion (`move`). Each one springs to its own value on the motion engine, and every
+          needle is in the spoken value ("40 %, Ortalama 32 %"). Here: the current value and a slower average. */}
+      <span class="lab-multi"><Gauge value={$v} unit="%" label="Yük"
+        needles={[{ value: $v * 0.8, label: "Ortalama", color: "info", length: 0.7, width: 2 }]} /></span>
+      {/* 8. A full circle: sweep={360} with start={0} puts `min` at 12 o'clock, and `wrap` (on by default for a full
+          circle) lets values go round instead of stopping at the end (75 on a 0–60 dial is one turn and 15).
+          turn={-$v} turns the whole scale under the needles, as a compass rose does; inlay draws your own node on
+          the face, under the scale. AnalogClock, Compass and Altimeter are built from exactly these props. */}
+      <span class="lab-circle"><Gauge min={0} max={60} sweep={360} start={0} turn={-$v} readout={false}
+        needles={[{ value: $v, color: "danger" }]} ticks={{ step: 5, minor: 4 }} inlay={<b>360°</b>} /></span>
     </div>
     {/* m:theme="night" switches the theme for this subtree only. The gauge re-reads its theme colors, so this is the
         place to check your zones and colors on a dark background. */}

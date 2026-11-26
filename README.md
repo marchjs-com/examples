@@ -21,14 +21,18 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [accordion](components/accordion) | Recipe.tsx, HelpCenter.tsx, AccordionLab.tsx, AccordionLab.test.tsx |
 | [activity-bar](components/activity-bar) | SeasonBar.tsx, EditorShell.tsx, ActivityBarLab.tsx, ActivityBarLab.test.tsx |
 | [alert](components/alert) | MoodAlert.tsx, CookieNotice.tsx, AlertLab.tsx, AlertLab.test.tsx |
+| [altimeter](components/altimeter) | BalloonRide.tsx, FlightPanel.tsx, AltimeterLab.tsx, AltimeterLab.test.tsx |
+| [analog-clock](components/analog-clock) | WorldClocks.tsx, MeetingRoom.tsx, AnalogClockLab.tsx, AnalogClockLab.test.tsx |
 | [app-shell](components/app-shell) | NightReader.tsx, AdminApp.tsx, AppShellLab.tsx, AppShellLab.test.tsx |
 | [app-ui](components/app-ui) | HaikuStudio.tsx, QueryConsole.tsx, AppUILab.tsx, AppUILab.test.tsx |
+| [attitude-indicator](components/attitude-indicator) | PaperPlane.tsx, DroneTelemetry.tsx, AttitudeIndicatorLab.tsx, AttitudeIndicatorLab.test.tsx |
 | [audio-reactive](components/audio-reactive) | DancingEmoji.tsx, SpeakerRing.tsx, AudioReactiveLab.tsx, AudioReactiveLab.test.tsx |
 | [avatar](components/avatar) | TeamRoll.tsx, CommentHeader.tsx, AvatarLab.tsx, AvatarLab.test.tsx |
 | [avatar-group](components/avatar-group) | PartyGuests.tsx, DocViewers.tsx, AvatarGroupLab.tsx, AvatarGroupLab.test.tsx |
 | [badge](components/badge) | MoodTags.tsx, InboxNav.tsx, BadgeLab.tsx, BadgeLab.test.tsx |
 | [bar-chart](components/bar-chart) | FruitVote.tsx, StoreSales.tsx, BarChartLab.tsx, BarChartLab.test.tsx |
 | [bar-list](components/bar-list) | EmojiPoll.tsx, TopPages.tsx, BarListLab.tsx, BarListLab.test.tsx |
+| [battery-gauge](components/battery-gauge) | PhoneCharge.tsx, DeviceFleet.tsx, BatteryGaugeLab.tsx, BatteryGaugeLab.test.tsx |
 | [before-after](components/before-after) | MondayMorning.tsx, PhotoFilter.tsx, BeforeAfterLab.tsx, BeforeAfterLab.test.tsx |
 | [bottom-nav](components/bottom-nav) | MoodBar.tsx, SocialTabs.tsx, BottomNavLab.tsx, BottomNavLab.test.tsx |
 | [bottom-right-controls](components/bottom-right-controls) | HelpBubble.tsx, FeedbackCorner.tsx, BottomRightControlsLab.tsx, BottomRightControlsLab.test.tsx |
@@ -60,6 +64,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [color-input](components/color-input) | GradientMixer.tsx, StoreTheme.tsx, ColorInputLab.tsx, ColorInputLab.test.tsx |
 | [combobox](components/combobox) | WorldClock.tsx, ShippingAddress.tsx, ComboboxLab.tsx, ComboboxLab.test.tsx |
 | [command-palette](components/command-palette) | MoodPalette.tsx, NotesToolbar.tsx, CommandPaletteLab.tsx, CommandPaletteLab.test.tsx |
+| [compass](components/compass) | TreasureHunt.tsx, WindStation.tsx, CompassLab.tsx, CompassLab.test.tsx |
 | [consent-banner](components/consent-banner) | CookieJar.tsx, VideoEmbed.tsx, ConsentBannerLab.tsx, ConsentBannerLab.test.tsx |
 | [context-menu](components/context-menu) | ColorSwatches.tsx, ChatMessages.tsx, ContextMenuLab.tsx, ContextMenuLab.test.tsx |
 | [copy-button](components/copy-button) | ColorTokens.tsx, ApiKeys.tsx, CopyButtonLab.tsx, CopyButtonLab.test.tsx |
@@ -78,6 +83,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [dialog](components/dialog) | LevelUp.tsx, DeleteProject.tsx, DialogLab.tsx, DialogLab.test.tsx |
 | [disclosure](components/disclosure) | Spoiler.tsx, AdvancedSettings.tsx, DisclosureLab.tsx, DisclosureLab.test.tsx |
 | [dock-layout](components/dock-layout) | MoodBoard.tsx, MailClient.tsx, DockLayoutLab.tsx, DockLayoutLab.test.tsx |
+| [dot-matrix](components/dot-matrix) | LedMessage.tsx, BusStop.tsx, DotMatrixLab.tsx, DotMatrixLab.test.tsx |
 | [drawer](components/drawer) | MusicQueue.tsx, FilterSheet.tsx, DrawerLab.tsx, DrawerLab.test.tsx |
 | [easing](components/easing) | BounceBall.tsx, MenuMotionTuner.tsx, EasingCurveEditorLab.tsx, EasingCurveEditorLab.test.tsx |
 | [editor-frame](components/editor-frame) | HaikuPad.tsx, SupportReply.tsx, EditorFrameLab.tsx, EditorFrameLab.test.tsx |
@@ -90,6 +96,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [feature-grid](components/feature-grid) | SuperpowerGrid.tsx, CoworkFeatures.tsx, FeatureGridLab.tsx, FeatureGridLab.test.tsx |
 | [feed](components/feed) | HaikuFeed.tsx, CommunityFeed.tsx, FeedLab.tsx, FeedLab.test.tsx |
 | [file-upload](components/file-upload) | AvatarDrop.tsx, JobApplication.tsx, FileUploadLab.tsx, FileUploadLab.test.tsx |
+| [flip-clock](components/flip-clock) | NightStand.tsx, LaunchCountdown.tsx, FlipClockLab.tsx, FlipClockLab.test.tsx |
 | [follow-button](components/follow-button) | ClubJoin.tsx, SuggestedList.tsx, FollowButtonLab.tsx, FollowButtonLab.test.tsx |
 | [font](components/font) | ShopSign.tsx, BlogTypography.tsx, FontPickerLab.tsx, FontPickerLab.test.tsx |
 | [format-toolbar](components/format-toolbar) | NeonSign.tsx, CommentBox.tsx, FormatToolbarLab.tsx, FormatToolbarLab.test.tsx |
@@ -129,6 +136,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [live-status](components/live-status) | CookieJar.tsx, MailSelection.tsx, LiveStatusLab.tsx, LiveStatusLab.test.tsx |
 | [loader](components/loader) | KettleLoader.tsx, DashboardOverlay.tsx, LoaderLab.tsx, LoaderLab.test.tsx |
 | [logo-cloud](components/logo-cloud) | EmojiParade.tsx, CafePartners.tsx, LogoCloudLab.tsx, LogoCloudLab.test.tsx |
+| [loudness-graph](components/loudness-graph) | LoudnessRide.tsx, StreamCheck.tsx, LoudnessGraphLab.tsx, LoudnessGraphLab.test.tsx |
 | [made-with-march](components/made-with-march) | HeartSwap.tsx, SiteFooter.tsx, MadeWithMarchLab.tsx, MadeWithMarchLab.test.tsx |
 | [markdown](components/markdown) | Postcard.tsx, IssueForm.tsx, MarkdownEditorLab.tsx, MarkdownEditorLab.test.tsx |
 | [media](components/media) | MoodBoard.tsx, ChatAttachments.tsx, MediaLab.tsx, MediaLab.test.tsx |
@@ -203,6 +211,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [sparkline](components/sparkline) | Heartbeat.tsx, StockWatch.tsx, SparklineLab.tsx, SparklineLab.test.tsx |
 | [spectrum](components/spectrum) | PartyLights.tsx, PodcastPlayer.tsx, SpectrumLab.tsx, SpectrumLab.test.tsx |
 | [spinner](components/spinner) | MagicEightBall.tsx, SaveButton.tsx, SpinnerLab.tsx, SpinnerLab.test.tsx |
+| [split-flap](components/split-flap) | WordFlip.tsx, Departures.tsx, SplitFlapLab.tsx, SplitFlapLab.test.tsx |
 | [splitter](components/splitter) | BeforeAfter.tsx, MailClient.tsx, SplitterLab.tsx, SplitterLab.test.tsx |
 | [stack](components/stack) | TagCloud.tsx, EditorToolbar.tsx, StackLab.tsx, StackLab.test.tsx |
 | [stat](components/stat) | PiggyBank.tsx, SaasMetrics.tsx, StatLab.tsx, StatLab.test.tsx |
@@ -212,6 +221,8 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [status-dot](components/status-dot) | TrafficLight.tsx, TeamPresence.tsx, StatusDotLab.tsx, StatusDotLab.test.tsx |
 | [stepper](components/stepper) | PizzaStepper.tsx, EventWizard.tsx, StepperLab.tsx, StepperLab.test.tsx |
 | [steps](components/steps) | TeaSteps.tsx, OrderTracking.tsx, StepsLab.tsx, StepsLab.test.tsx |
+| [stereo-vu](components/stereo-vu) | TapeDeck.tsx, PodcastMonitor.tsx, StereoVuLab.tsx, StereoVuLab.test.tsx |
+| [stopwatch](components/stopwatch) | FiveSeconds.tsx, RunningLaps.tsx, StopwatchLab.tsx, StopwatchLab.test.tsx |
 | [story-progress](components/story-progress) | Countdown.tsx, Onboarding.tsx, StoryProgressLab.tsx, StoryProgressLab.test.tsx |
 | [story-ring](components/story-ring) | FriendsTray.tsx, MyStory.tsx, StoryRingLab.tsx, StoryRingLab.test.tsx |
 | [story-viewer](components/story-viewer) | ColorDiary.tsx, StoryTray.tsx, StoryViewerLab.tsx, StoryViewerLab.test.tsx |
@@ -226,6 +237,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [textarea](components/textarea) | HaikuPad.tsx, SupportTicket.tsx, TextareaLab.tsx, TextareaLab.test.tsx |
 | [theme-editor](components/theme-editor) | OneColorTheme.tsx, BrandThemeSettings.tsx, ThemeEditorLab.tsx, ThemeEditorLab.test.tsx |
 | [theme-menu](components/theme-menu) | ThemePostcard.tsx, AccountBar.tsx, ThemeMenuLab.tsx, ThemeMenuLab.test.tsx |
+| [thermometer](components/thermometer) | TeaKettle.tsx, WeatherCard.tsx, ThermometerLab.tsx, ThermometerLab.test.tsx |
 | [thread-nav](components/thread-nav) | RecipeThread.tsx, ShopAdmin.tsx, ThreadNavLab.tsx, ThreadNavLab.test.tsx |
 | [time](components/time) | SleepCalc.tsx, OpeningHours.tsx, TimeInputLab.tsx, TimeInputLab.test.tsx |
 | [time-ruler](components/time-ruler) | EggTimer.tsx, VideoScrubber.tsx, TimeRulerLab.tsx, TimeRulerLab.test.tsx |

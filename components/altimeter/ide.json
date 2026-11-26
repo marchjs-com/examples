@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Uçak altimetresi: yüzler, binler, on binler ibresi tek kadranda, hPa / inHg basınç penceresi, yaylı ibreler.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "BalloonRide.tsx",
+			"src": "examples://components/altimeter/BalloonRide.tsx"
+		},
+		{
+			"type": "code",
+			"name": "FlightPanel.tsx",
+			"src": "examples://components/altimeter/FlightPanel.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AltimeterLab.tsx",
+			"src": "examples://components/altimeter/AltimeterLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AltimeterLab.test.tsx",
+			"src": "examples://components/altimeter/AltimeterLab.test.tsx"
+		}
+	]
+}

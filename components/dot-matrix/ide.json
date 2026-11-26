@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "LED nokta matris ekranı: 5×7 yazı, sayılar, kayan metin, silme / dağılma geçişi, kendi glifleriniz.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "LedMessage.tsx",
+			"src": "examples://components/dot-matrix/LedMessage.tsx"
+		},
+		{
+			"type": "code",
+			"name": "BusStop.tsx",
+			"src": "examples://components/dot-matrix/BusStop.tsx"
+		},
+		{
+			"type": "code",
+			"name": "DotMatrixLab.tsx",
+			"src": "examples://components/dot-matrix/DotMatrixLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "DotMatrixLab.test.tsx",
+			"src": "examples://components/dot-matrix/DotMatrixLab.test.tsx"
+		}
+	]
+}
