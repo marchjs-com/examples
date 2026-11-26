@@ -1,36 +1,38 @@
-// WaterHabit: the creative-minimal Heatmap example.
-//
-// What it shows: a calendar of water-drinking habit over eight weeks. The button adds one glass to today, and today's cell
-// gets darker.
-// When to use this pattern: a habit or contribution calendar. With `calendar` the columns are weeks and the rows are weekdays;
-// `x` is a date, and `value` the number that picks the tone.
-// Animation: with `animate` the cell fades to its new tone (motion engine; reduced motion and "Stop all" apply); leave it
-// out and the tone changes at once.
-// Accessibility: the chart has a title, a hidden data table carries every cell, and the arrow keys move between cells.
 import { Heatmap } from "march/charts"
 import { Button } from "march/ui"
 
-// A fixed "today" keeps the example the same every time. The data: eight weeks of days, newest first, with a pretend number
-// of glasses per day (today starts at zero).
+// A water-drinking habit calendar: a playful, minimal Heatmap in calendar mode.
+// Eight weeks of glasses per day, contribution-graph style. "Bir bardak" (one glass) adds a glass to today, and
+// today's cell gets darker with every click.
+// Use a calendar heatmap like this for any daily habit or count: workouts, commits, pages read, study minutes.
+
+// A fixed "today", so the calendar looks the same on every load. Use `new Date()` in a real app.
 const TODAY = new Date(2026, 10, 20)
+// 56 days back from today (gun = day, bardak = glasses). Today starts at 0; the rest get a deterministic 0–8.
 const start = Array.from({ length: 8 * 7 }, (_, i) => { const d = new Date(TODAY); d.setDate(TODAY.getDate() - i); return { gun: d, bardak: i === 0 ? 0 : (i * 5) % 9 } })
 
 export function WaterHabit() {
-  // $days is the data list; Heatmap reads it through a function below, so a change redraws only the cells.
   let $days = start
-  // Adds one glass to the first item (today) and keeps every other day as it is.
+  // Today is the first row (i === 0); a new array with one more glass there is what tells March the data changed.
   const drink = () => { $days = $days.map((d, i) => (i === 0 ? { ...d, bardak: d.bardak + 1 } : d)) }
+  // Heatmap props:
+  // - data={() => $days}: a function reading the signal, so every glass redraws the calendar.
+  // - x="gun": in calendar mode x is the date; value="bardak": the number per day.
+  // - calendar={{ weeks: 8 }}: weeks as columns and weekdays as rows, eight weeks wide, with month names, weekday
+  //   labels and a "less → more" legend on by default.
+  // - end={TODAY}: the last day shown (`end` is the older name of `to`).
+  // - max={8}: eight glasses is the darkest tone, a daily goal rather than the data maximum.
+  // - valueLabel: the name of the value in the tooltip ("Bardak" = glass).
+  // - animate: true, the default spring, written out: the cells pop in on first draw and today's cell fades to its
+  //   darker tone on each click. animate={{ stagger: 8 }} would bring the cells in as a diagonal wave; animate={false}
+  //   draws at once; reduced motion is honoured automatically.
+  // - title: the SVG's accessible name; a visually hidden table lists every day for screen readers.
+  // Keyboard: Tab reaches the calendar, ↑ ↓ move one day, ← → one week; the tooltip says the date and the value.
   return <div sx={{ flex: "col", gap: 2 }}>
     <div sx={{ flex: ["row", "wrap", "center"], gap: 2 }}>
-      {/* The action; the text next to it reads the live count for today. */}
       <Button on:click={drink}>💧 Bir bardak</Button>
       <span>Bugün: {() => $days[0].bardak} bardak</span>
     </div>
-    {/* - data: a function returning the rows, so the chart follows $days.
-        - x="gun": the key that holds the date; value="bardak": the key that holds the number.
-        - calendar={{ weeks: 8 }}: weeks as columns and weekdays as rows; end: the last day shown.
-        - max={8}: the value of the darkest tone (default: the biggest value in the data).
-        - valueLabel: the word for the value in the tooltip. animate: cells fade to their new tone. title: accessible name. */}
     <Heatmap data={() => $days} x="gun" value="bardak" calendar={{ weeks: 8 }} end={TODAY} max={8} valueLabel="Bardak" animate title="Su takvimi" />
   </div>
 }

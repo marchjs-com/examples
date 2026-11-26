@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Başlangıçtan sona artı ve eksi adımlar, ara toplamlar ve bağlantı çizgileri; çubuklar sırayla kurulur.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "PiggyBank.tsx",
+			"src": "examples://components/waterfall-chart/PiggyBank.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ProfitBridge.tsx",
+			"src": "examples://components/waterfall-chart/ProfitBridge.tsx"
+		},
+		{
+			"type": "code",
+			"name": "WaterfallChartLab.tsx",
+			"src": "examples://components/waterfall-chart/WaterfallChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "WaterfallChartLab.test.tsx",
+			"src": "examples://components/waterfall-chart/WaterfallChartLab.test.tsx"
+		}
+	]
+}

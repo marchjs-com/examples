@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "0–100 puan halkası; düşük / orta / yüksek düzey ya da birden çok renk.",
+	"description": "0–100 puan halkası; düşük / orta / yüksek düzey ya da birden çok renk, sayı da birlikte sayar.",
 	"sources": [
 		{
 			"type": "code",

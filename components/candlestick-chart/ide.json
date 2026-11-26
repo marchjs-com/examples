@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Fiyat mumları: açılış, en yüksek, en düşük, kapanış; hacim, ortalamalar, canlı kayan pencere ve aralık gezgini.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "MoodCandles.tsx",
+			"src": "examples://components/candlestick-chart/MoodCandles.tsx"
+		},
+		{
+			"type": "code",
+			"name": "CoinWatch.tsx",
+			"src": "examples://components/candlestick-chart/CoinWatch.tsx"
+		},
+		{
+			"type": "code",
+			"name": "CandlestickChartLab.tsx",
+			"src": "examples://components/candlestick-chart/CandlestickChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "CandlestickChartLab.test.tsx",
+			"src": "examples://components/candlestick-chart/CandlestickChartLab.test.tsx"
+		}
+	]
+}

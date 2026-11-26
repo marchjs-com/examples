@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Kategori başına çeyrekler, bıyıklar, aykırılar ve ortalama; keman ya da ikisi birden, kutular ortancadan büyür.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "PetNaps.tsx",
+			"src": "examples://components/box-plot/PetNaps.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ApiLatency.tsx",
+			"src": "examples://components/box-plot/ApiLatency.tsx"
+		},
+		{
+			"type": "code",
+			"name": "BoxPlotLab.tsx",
+			"src": "examples://components/box-plot/BoxPlotLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "BoxPlotLab.test.tsx",
+			"src": "examples://components/box-plot/BoxPlotLab.test.tsx"
+		}
+	]
+}

@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Ham değerlerden kutular; birikimli ya da normalleştirilmiş, gruplar üst üste, çan ya da yoğunluk eğrisi, yeniden kutulamada biçim değiştirir.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "DiceRolls.tsx",
+			"src": "examples://components/histogram/DiceRolls.tsx"
+		},
+		{
+			"type": "code",
+			"name": "PageLoadTimes.tsx",
+			"src": "examples://components/histogram/PageLoadTimes.tsx"
+		},
+		{
+			"type": "code",
+			"name": "HistogramLab.tsx",
+			"src": "examples://components/histogram/HistogramLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "HistogramLab.test.tsx",
+			"src": "examples://components/histogram/HistogramLab.test.tsx"
+		}
+	]
+}

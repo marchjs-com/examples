@@ -1,29 +1,32 @@
-// Heartbeat: the creative-minimal Sparkline example.
-//
-// What it shows: a live pulse line. "Run" raises the heart rate and "Rest" lowers it; the small line follows the last 20 readings
-// and the number beside it shows the latest one.
-// When to use this pattern: a tiny trend next to a number, fed by data that keeps changing. Pass `data` as a function (or a
-// signal) and the line redraws itself whenever the data changes.
 import { Sparkline } from "march/charts"
 import { Button } from "march/ui"
 
+// A heart rate monitor: a playful, minimal Sparkline.
+// The run button pushes the pulse up, the rest button brings it down; the tiny line shows the last 20 readings and the
+// number next to it the current one. Once the window is full, every new reading slides the line to the left.
+// Use a sparkline when a trend should sit inline next to a number (a KPI, a table cell, a list row) without axes.
+
 export function Heartbeat() {
-  // `let $beats` is a March signal holding the readings. add(d) appends the last reading plus d (kept between 55 and 180) and keeps
-  // only the newest 20, so the line scrolls along.
+  // Heart rate readings (bpm). A signal: replacing the array redraws the line.
   let $beats = [72, 74, 71, 73, 75, 72, 70, 74]
+  // Adds a reading `d` away from the last one, clamped to 55–180 bpm, and keeps only the last 20 (a moving window).
+  // A new array is assigned, so the signal notices the change.
   const add = (d: number) => { const last = $beats[$beats.length - 1]; $beats = [...$beats, Math.max(55, Math.min(180, last + d))].slice(-20) }
+  // Sparkline props:
+  // - data={() => $beats}: a function reading the signal, so the line follows every new reading.
+  // - width / height: 160 × 40 px (default 120 × 32).
+  // - area: fills under the line; color={4}: palette slot 4 (0-based) for the line and area.
+  // - title: the accessible name, read before the summary (how many values, first and last, min and max).
+  // - No `animate` prop: the default spring. An appended point grows out of the last one; when the window moves on
+  //   (first reading dropped, one appended) the line slides left, and the last dot glides with it. Use animate={false}
+  //   to draw at once, or an easing name like "out"; reduced motion is honoured automatically.
+  // Accessibility: the line is an image with a spoken summary and nothing to focus, so the current number is also
+  // written as text next to it.
   return <div sx={{ flex: ["row", "wrap", "center"], gap: 3 }}>
     <Button size="sm" on:click={() => add(14)}>🏃 Koş</Button>
     <Button size="sm" variant="secondary" on:click={() => add(-10)}>🧘 Dinlen</Button>
-    {/* Sparkline options used here:
-        - data={() => $beats}: a function, so the line follows the signal and redraws when it changes.
-        - width and height: the size in px (the default is 120 by 32).
-        - area: fills the space under the line.
-        - color={4}: a slot of the chart palette (0-based); `colors` would give your own colours instead.
-        - title: the accessible name. The line is an image (role="img") whose label is the title followed by a summary (how many
-          values, first and last, minimum and maximum). There is nothing to focus, so the latest number is also shown as text
-          next to it. */}
     <Sparkline data={() => $beats} width={160} height={40} area color={4} title="Nabız" />
+    {/* The latest reading as text, read reactively through a function child. */}
     <strong>{() => `${$beats[$beats.length - 1]} bpm`}</strong>
   </div>
 }
