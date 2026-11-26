@@ -1,7 +1,7 @@
 // Members: the real-life Table example.
 //
 // What it shows: a member-management table with 10,000 rows. Virtual scrolling keeps it fast (only the visible rows are
-// drawn); columns can be sorted and filtered by city and by status; rows can be selected, and the selection feeds two bulk
+// drawn); columns can be sorted (Shift+click another header to sort by several columns) and filtered by city and status; rows can be selected, and the selection feeds two bulk
 // actions (invite, suspend, the second after a confirmation); the toolbar can export the rows as CSV.
 // When to use this pattern: large lists that people manage: `virtual` + a fixed `height` and `rowHeight`, `selectable` +
 // `bulkActions`, and per-column `filter` and `render`. Data here is generated; in a real app `rows` is your data, or
