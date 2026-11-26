@@ -61,9 +61,10 @@ test("boş zorunlu alan geçersiz; yazınca geçerli olur; harf yazmak NaN üret
   await s.type("#lab-weight", "72,5")
   expect(s.text().includes("Kilo: 72.5")).toBe(true)
   expect(el.getAttribute("aria-invalid")).toBe(null)
-  // letters make no number: the field refuses them (a short shake), keeps its text and its value
+  // letters make no number: the field refuses them (a short shake), keeps its text (in the locale's format) and its value
+  const shown = el.value
   await s.type("#lab-weight", "yetmiş")
-  expect(el.value).toBe("72,5")
+  expect(el.value).toBe(shown)
   expect(el.getAttribute("aria-invalid")).toBe(null)
   expect(s.text().includes("Kilo: 72.5")).toBe(true)
   expect(s.find("Kilitli sayı")?.hasAttribute("disabled")).toBe(true)
