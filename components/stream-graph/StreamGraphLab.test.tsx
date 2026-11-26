@@ -4,11 +4,12 @@ import { StreamGraphLab } from "./StreamGraphLab.tsx"
 // StreamGraphLab's tests: they run in MarchIDE's Tests tab when you save. They check layers, texts and the hidden
 // data table (what users and screen readers get), not how far an animation has run.
 
-// Proves four genres make four layers and the accessible name and description reach the SVG.
+// Proves four genres make four layers in the plot (the navigator under it draws its own small overview areas, so the
+// count looks only inside the main SVG) and the accessible name and description reach the SVG.
 test("dört tür dört katman; başlık ve açıklama", () => {
   const s = renderTest(() => <StreamGraphLab />)
   const chart = s.get(".lab-stream")!
-  expect(chart.querySelectorAll(".m-chart-area").length).toBe(4)
+  expect(chart.querySelectorAll(".m-chart-svg .m-chart-area").length).toBe(4)
   expect(chart.querySelector("svg title")!.textContent).toBe("Türlere göre dinleme")
   expect(chart.querySelector("svg desc")!.textContent).toBe("Ay ay müzik türlerine göre dinleme saatleri")
 })
