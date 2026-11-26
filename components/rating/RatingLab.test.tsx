@@ -1,7 +1,21 @@
+// Tests for RatingLab. They run in MarchIDE's Tests tab every time you save.
+//
+// How these tests are written (march/testing):
+// - renderTest(() => <RatingLab />) mounts the component in a fresh, isolated root and returns a handle `s`.
+// - s.get / s.all(selector) find elements, s.find(text) finds an element by its text, s.sees(text) says whether the
+//   page (portals included) shows that text; s.click(textOrElement) clicks like a user and waits for the view to
+//   update,
+//   so a test that clicks is async and awaits it. s.flush(n) lets pending updates run for n ticks.
+// - The tests check what a user or a screen reader can observe (visible text, aria attributes, classes of the
+//   parts) rather than internal state, so they keep passing when the component's internals change.
+// - Each mark is a radio named by `starLabel`, so the tests click a mark by that name and read aria-checked.
+// To adapt them: copy one test, change the selector or the expected value.
+
 import { test, expect, renderTest } from "march/testing"
 import { RatingLab } from "./RatingLab.tsx"
 
-// RatingLab'in testleri: kaydedince Testler sekmesinde çalışır
+// Pressing a mark sets the score: it becomes aria-checked, the previous one is no longer checked, the displayed
+// score updates and onChange counted one change.
 test("bir yıldıza basınca puan ve onChange sayacı değişir", async () => {
   const s = renderTest(() => <RatingLab />)
   expect(s.text().includes("Puan: 3")).toBe(true)
@@ -12,6 +26,7 @@ test("bir yıldıza basınca puan ve onChange sayacı değişir", async () => {
   expect(s.text().includes("Değişiklik: 1")).toBe(true)
 })
 
+// Several Ratings can share one signal with bind:value: pressing a heart also moves the other Rating's checked mark.
 test("aynı değere bağlı başka bir Rating de güncellenir", async () => {
   const s = renderTest(() => <RatingLab />)
   await s.click("2 kalp")
@@ -19,6 +34,7 @@ test("aynı değere bağlı başka bir Rating de güncellenir", async () => {
   expect(s.find("Gece 2")?.getAttribute("aria-checked")).toBe("true")
 })
 
+// `label` names the radio group; max={10} draws ten marks; the score text follows; `class` lands on the root element.
 test("label grubun adı; max={10} on işaret çizer; class köke gider", async () => {
   const s = renderTest(() => <RatingLab />)
   const group = s.find("Hizmet puanı")
@@ -29,6 +45,7 @@ test("label grubun adı; max={10} on işaret çizer; class köke gider", async (
   expect(s.find("Genel puan")?.classList.contains("lab-rating")).toBe(true)
 })
 
+// A readonly Rating cannot change; a fractional value (4.5) draws half a mark, and the marks are disabled buttons.
 test("salt okunur puan değişmez; kesirli kısım yarım işaret çizer", async () => {
   const s = renderTest(() => <RatingLab />)
   const avg = s.find("Ortalama 4,5") as HTMLElement

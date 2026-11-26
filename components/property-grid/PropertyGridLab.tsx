@@ -1,13 +1,23 @@
+// PropertyGridLab: the full-featured PropertyGrid example; it uses every prop at least once.
+//
+// Props shown here: properties (own control, description, keywords, name, placeholder, step, unit, readonly, hidden,
+// validate), value + setValue + onChange, saved, onSave, label, history, dirty, id, groups, search, layout, api,
+// historyButtons / resetButtons / footer, changeMarks, groupTools, persist, openGroups, labels and class.
+// Use it as a reference when you need one specific option: find the prop below, copy the line.
+// PropertyGridLab.test.tsx (next to this file) checks this example; it runs in MarchIDE's Tests tab when you save.
+
 import { PropertyGrid, Toolbar, Button, type PropertyGridApi } from "march/ui"
 
-// PropertyGrid'in bütün özellikleri: satırlar (kendi denetimi, açıklama, anahtar kelime, ad, yer tutucu, adım, birim,
-// salt okunur, gizli, doğrulama), value + setValue + onChange, saved, onSave, ad, history (burada ızgaranın kendi küçük
-// yığını: uygulamanın geri alma kaydına yazmaz), dirty (false: "kaydedilmedi" kaydına yazmaz), id, grup sırası, arama, yerleşim, api, başlık / satır /
-// alt çubuk düğmeleri, değişiklik işaretleri, grup araçları, açık grupların saklanması, başta açık gruplar, metinler, sınıf.
+// A control of our own for the "icon" row. A `control` component receives `value` (a getter) and `setValue`; it may
+// also receive id, labelledby, describedby, invalid and readonly.
 const Faces = (p: { value?: unknown; setValue?: (v: unknown) => void }) => <div role="group" sx={{ flex: "row", gap: 1 }}>
   {["🙂", "🚀", "🌙"].map((e) => <Button size="sm" variant="ghost" pressed={p.value === e} on:click={() => p.setValue?.(e)}>{e}</Button>)}
 </div>
 
+// The rows. Without `type` a row is a text field. Options used here: group, placeholder, keywords (extra words the
+// search matches), name (the form field name), description (small text under the row), control (our own editor),
+// readonly, unit and step and min (for numbers), validate(value) (an error text or null) and hidden(values)
+// (the row is hidden while it returns true: the share link only exists for public projects).
 const ROWS = [
   { key: "name", label: "Ad", group: "Kimlik", placeholder: "Proje adı", keywords: "başlık isim", name: "project-name", description: "Listelerde görünür" },
   { key: "icon", label: "Simge", group: "Kimlik", control: Faces },
@@ -17,7 +27,9 @@ const ROWS = [
   { key: "link", label: "Paylaşım bağlantısı", group: "Plan", hidden: (v: Record<string, unknown>) => !v.public },
 ]
 
-// history: yalnız bu ızgaranın geri alma yığını (push, undo / redo, adım adları); başlıktaki Geri al / Yinele onu kullanır
+// A small undo stack of our own, to show the `history` prop. By default the grid records every change in the app's
+// undo history (so Ctrl+Z works); this object only serves this grid: push(step), undo, redo, canUndo, canRedo and the
+// step names that the Undo / Redo buttons show.
 type Step = { label: string; undo: () => void; redo: () => void }
 function ownHistory() {
   let $past: Step[] = []
@@ -33,16 +45,36 @@ function ownHistory() {
 }
 
 export function PropertyGridLab() {
+  // The edited object.
   let $value: Record<string, unknown> = { name: "Mars", icon: "🚀", id: "p-42", budget: 4000, public: false, link: "marchjs.com/p/42" }
+  // What changes are compared with. After onSave it becomes the current value, so the footer says "no changes".
   let $saved: Record<string, unknown> = { ...$value }
+  // How many times onChange fired.
   let $edits = 0
+  // The grid's api object (changes(), save(), revert(), markSaved(), focus(key)), received through the `api` prop.
   let grid: PropertyGridApi | undefined
   return <div sx={{ flex: "col", gap: 2 }}>
+    {/* Buttons that use the grid's api: revert all changes, or move focus to the budget field. */}
     <Toolbar label="Lab düğmeleri">
       <Button size="sm" variant="secondary" on:click={() => grid?.revert()}>Geri dön (api)</Button>
       <Button size="sm" variant="secondary" on:click={() => grid?.focus("budget")}>Bütçeye git</Button>
       <span sx={{ text: "sm" }}>düzenleme: {$edits} · kayıtlı ad: {String($saved.name)}</span>
     </Toolbar>
+    {/* The props of the grid:
+        - properties, value, setValue, onChange: the rows and the edited object (the same pair that bind:value sets).
+        - saved, onSave: what changes are compared with, and the Save callback.
+        - label: accessible name; history: where changes are recorded (here our own stack); dirty={false}: do not
+          register
+          unsaved changes with the app's DirtyState (the default does, and warns when leaving the page).
+        - id: the base of the ids of the grid's parts (also its name in the registry); groups: the order of the groups;
+          search: the search field; layout="auto":
+          the label sits beside the editor (and above it in narrow panels), "stacked" is always above.
+        - api: receives the grid's api object; historyButtons, resetButtons, changeMarks, footer: the Undo / Redo
+          buttons,
+          the per-row reset, the dot on changed rows and the footer bar with Revert and Save.
+        - groupTools: open / close all groups; persist: remember which groups are closed (in localStorage, under this
+          name); openGroups: the groups that start open.
+        - labels: every text the grid writes itself; class: on the section (the tests use it). */}
     <PropertyGrid
       properties={ROWS}
       value={$value}
