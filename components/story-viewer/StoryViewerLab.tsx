@@ -49,14 +49,14 @@ export function StoryViewerLab(props: { startOpen?: boolean }) {
     <Button size="sm" variant="ghost" on:click={() => show("u2")}>Can'dan aç</Button>
     <Badge tone="primary">{$log}</Badge>
     <span sx={{ text: "xs", color: "muted" }}>{`görülen: ${$seen.join(", ") || "-"}`}</span>
-    {/* open and onClose: controlled by $open (functions, so they stay live). groups: the data. start: the person to open
-        at. duration: the default time per story in ms (an item's own `duration` wins). onSeen: called for each story
-        shown. onReply: shows the reply field and receives the typed text. onLike and liked: show the heart; liked tells
-        which stories are liked and onLike receives the new state. progress, avatar, time, pauseButton, closeButton, arrows
-        and sentNote are all on by default; they are written out here to show they can each be set to false.
-        labels: every text the viewer writes itself, so it can be translated or reworded (dialog, play, pause, close,
-        previous, next, like, send, sent, reply(group), replyPlaceholder(group), status(group, index, total)).
-        class is kept on the dialog. */}
+    {/* open and onClose: the $open state drives them, written as functions so they stay live. groups: the data.
+        start: the person to open at. duration: the default time per story in ms; an item's own duration wins. onSeen:
+        called for each story shown. onReply: shows the reply field and receives the typed text. onLike and liked: show
+        the heart; liked tells which stories are liked and onLike receives the new state. progress, avatar, time,
+        pauseButton, closeButton, arrows and sentNote are all on by default; they are written out here to show each can
+        be set to false. labels: every text the viewer writes itself, so it can be translated or reworded: dialog, play,
+        pause, close, previous, next, like, send, sent, and reply, replyPlaceholder and status, which are functions of
+        the group (status also gets the index and the total). class is kept on the dialog. */}
     <StoryViewer class="lab-stories" open={() => $open} onClose={() => { $open = false; $log = "kapandı" }}
       groups={GROUPS} start={() => $start} duration={4000}
       onSeen={(_, s) => { if (!$seen.includes(s.id)) $seen = [...$seen, s.id] }}
