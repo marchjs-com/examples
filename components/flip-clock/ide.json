@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Yaprak saat: saat, dakika, saniye kartları, yanıp sönen ayraç, 12 saatte ÖÖ/ÖS kanadı, saat dilimi ya da kendi zaman kaynağınız.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "NightStand.tsx",
+			"src": "examples://components/flip-clock/NightStand.tsx"
+		},
+		{
+			"type": "code",
+			"name": "LaunchCountdown.tsx",
+			"src": "examples://components/flip-clock/LaunchCountdown.tsx"
+		},
+		{
+			"type": "code",
+			"name": "FlipClockLab.tsx",
+			"src": "examples://components/flip-clock/FlipClockLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "FlipClockLab.test.tsx",
+			"src": "examples://components/flip-clock/FlipClockLab.test.tsx"
+		}
+	]
+}

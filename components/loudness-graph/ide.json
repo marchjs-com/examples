@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Ses yüksekliği geçmişi: anlık / kısa süreli / bütünleşik LUFS, −14 ve −23 hedef çizgileri, stereo korelasyon grafiği ve göstergeleri.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "LoudnessRide.tsx",
+			"src": "examples://components/loudness-graph/LoudnessRide.tsx"
+		},
+		{
+			"type": "code",
+			"name": "StreamCheck.tsx",
+			"src": "examples://components/loudness-graph/StreamCheck.tsx"
+		},
+		{
+			"type": "code",
+			"name": "LoudnessGraphLab.tsx",
+			"src": "examples://components/loudness-graph/LoudnessGraphLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "LoudnessGraphLab.test.tsx",
+			"src": "examples://components/loudness-graph/LoudnessGraphLab.test.tsx"
+		}
+	]
+}
