@@ -55,8 +55,8 @@ export function NumberInputLab() {
     <Row title="Form: boş başlar, zorunlu, geçersiz, yer tutucu, ref, odak">
       {/* Form use. The value starts as null (an empty field).
           - id / name / class: for labels, form submission and CSS or tests. required: the field must be filled.
-          - invalid: marks the field with aria-invalid; here it is true while the value is empty. (The component also
-            marks text that is not a number as invalid by itself.)
+          - invalid: marks the field with aria-invalid; here it is true while the value is empty. (The component itself
+            refuses characters that make no number, with a short shake: `motion={false}` turns it off.)
           - placeholder, autocomplete="off" and maxLength: the usual input attributes. inputmode="decimal" makes
             phones show a keypad with a decimal mark.
           - describedby points at the hint text below, so a screen reader reads it with the field.
