@@ -3,15 +3,20 @@
 // What it shows: the TextInput options together: a bound value (bind:value) and onChange, transform, prefix / suffix, type,
 // minLength / maxLength, autocomplete and inputmode hints, its own error text (error, errorSpace), Enter (onKeyDown) and
 // paste (onPaste) handlers, ref, focus (onFocus, onBlur), disabled, readonly, required, invalid with describedby,
-// spellcheck, autofocus, name, id, class and aria-label / ariaLabel. Each section shows one idea and prints what happened.
+// spellcheck, autofocus, name, id, class and aria-label / ariaLabel, and the input mask (mask, maskValue, maskPlaceholder,
+// maskMotion, maskDone, maskHint, maskLabels, onMaskState, onComplete). Each section shows one idea and prints what happened.
 // Use it as a catalogue: copy the prop you need.
 //
-// Animation: none of its own.
+// Animation: the mask's own (literals fade in, slots grow as they fill, a refused character shakes, the check mark pops),
+// on the motion engine; the mask section turns the shake off and replaces the fill with its own.
 // Accessibility: a native <input>. Without a <Field> its name must come from `aria-label` (or ariaLabel); an `error` text is
 // linked with aria-describedby and aria-invalid and is a role="alert"; `invalid` + `describedby` do the same by hand for
 // your own message. Prefix and suffix are plain text next to the input, so they are read with it.
 import { TextInput, Card } from "march/ui"
-import { Icon, ticket } from "march/icons"
+import { Icon, ticket, star } from "march/icons"
+import { date } from "march/mask"
+import { iban } from "march/mask/presets"
+import { animate } from "march/motion"
 
 // A small layout helper: a caption above one example, so each option has a name on the page.
 const Section = (props: { title: string; children?: unknown }) => <div sx={{ flex: "col", gap: 1 }}>
@@ -30,6 +35,11 @@ export function TextInputLab() {
   let $pasted = ""
   let $focus = "yok"
   let $refTag = ""
+  // The masked fields: an IBAN (raw value), a birth date (parsed: ISO), the last mask state and how often a field completed.
+  let $iban = ""
+  let $birth: unknown = null
+  let $state = "—"
+  let $completed = 0
   // A derived value (a `const $x` is recomputed when $mail changes): the e-mail's error text, empty once it has an "@".
   const $mailError = $mail.includes("@") ? "" : "Geçerli bir e-posta yazın"
   return <div sx={{ flex: "col", gap: 4 }}>
@@ -60,6 +70,22 @@ export function TextInputLab() {
         onPaste={(e: ClipboardEvent) => { e.preventDefault(); $pasted = e.clipboardData?.getData("text") ?? "" }}
         onFocus={() => $focus = "içeride"} onBlur={() => $focus = "dışarıda"} ref={(el: HTMLInputElement) => $refTag = el.tagName} />
       <span>Gönderilen: {$sent || "—"} · yapıştırılan: {$pasted || "—"} · odak: {$focus} · ref: {$refTag}</span>
+    </Section>
+    <Section title="Maske: IBAN (ham değer), tarih (ISO), şablon, hareketler, onay işareti">
+      {/* mask takes a preset (iban(), date()), a pattern ("(999) 999 99 99") or a function. maskValue: "raw" (default) holds
+          "TR33…" without spaces; "parsed" holds the mask's own value (ISO "1990-04-23" for a date). maskPlaceholder:
+          "lazy" | "eager" (the whole template) | "ghost" (the rest faded). maskHint is read by screen readers
+          (aria-describedby); maskLabels.complete is announced when the value is complete. */}
+      <TextInput bind:value={$iban} mask={iban({ country: "TR" })} maskPlaceholder="ghost" aria-label="IBAN numarası"
+        maskHint="TR ve 24 rakam" maskLabels={{ complete: "IBAN tamam" }}
+        onMaskState={(s: { text: string; complete: boolean; error: string | null }) => $state = `${s.text} · ${s.complete ? "tamam" : "eksik"}${s.error ? ` · ${s.error}` : ""}`}
+        onComplete={() => $completed++} />
+      {/* maskMotion: false turns every animation off; an object turns one off (reject: false) or replaces it with your own
+          function (fill gets the character's element). maskDone replaces the check mark with any icon, or hides it (false). */}
+      <TextInput bind:value={$birth} mask={date({ locale: "tr" })} maskValue="parsed" maskPlaceholder="eager" aria-label="Doğum tarihi"
+        maskMotion={{ reject: false, fill: (el: HTMLElement) => animate(el, { opacity: [0, 1] }, { duration: 120 }) }}
+        maskDone={<Icon of={star} />} />
+      <span>IBAN: {$iban || "—"} · durum: {$state} · tamamlandı: {$completed} · doğum: {String($birth ?? "—")}</span>
     </Section>
     {/* m:theme="night" draws the card in the dark theme, to check the states on a dark ground. */}
     <Card m:theme="night">

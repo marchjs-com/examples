@@ -4,13 +4,13 @@
 	"sources": [
 		{
 			"type": "code",
-			"name": "HandlePicker.tsx",
-			"src": "examples://components/text-input/HandlePicker.tsx"
+			"name": "GiftCode.tsx",
+			"src": "examples://components/text-input/GiftCode.tsx"
 		},
 		{
 			"type": "code",
-			"name": "DeliveryStep.tsx",
-			"src": "examples://components/text-input/DeliveryStep.tsx"
+			"name": "CheckoutForm.tsx",
+			"src": "examples://components/text-input/CheckoutForm.tsx"
 		},
 		{
 			"type": "code",
