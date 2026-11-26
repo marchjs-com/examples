@@ -1,4 +1,4 @@
-import { BulletChart } from "march/charts"
+import { BulletChart, type BulletPoint } from "march/charts"
 import { Button, Card } from "march/ui"
 
 // BulletChartLab: every BulletChart prop in one place, the full-featured reference example.
@@ -10,13 +10,15 @@ import { Button, Card } from "march/ui"
 
 // A weekly scorecard: three measures, each with its actual value, target, last week's value and three range ends.
 // `k` is the "week": each new week raises revenue and orders a little, so the bars visibly grow towards (and past)
-// their targets. The keys are Turkish on purpose (ad = name, birim = unit, gerçek = actual, hedef = target,
-// geçen = last, bantlar = bands) to show that label / value / target / … can name any key.
-// The bands differ per row (revenue in thousands, rating out of 5), which is why each row carries its own `bantlar`.
-const make = (k: number) => [
-  { ad: "Ciro", birim: "bin ₺", gerçek: 220 + k * 20, hedef: 260, geçen: 210, bantlar: [150, 220, 300] },
-  { ad: "Sipariş", birim: "adet", gerçek: 140 + k * 5, hedef: 150, geçen: 160, bantlar: [80, 130, 200] },
-  { ad: "Puan", birim: "5 üzerinden", gerçek: 4.1, hedef: 4.5, geçen: 4.3, bantlar: [3, 4, 5] },
+// their targets. The keys are not the defaults on purpose (name, unit, actual, goal, last, bands) to show that
+// label / value / target / … can name any key.
+// The bands differ per row (revenue in thousands, rating out of 5), which is why each row carries its own `bands`.
+// One row of the scorecard (the type the callbacks below receive in `datum`).
+type Row = { name: string; unit: string; actual: number; goal: number; last: number; bands: number[] }
+const make = (k: number): Row[] => [
+  { name: "Ciro", unit: "bin ₺", actual: 220 + k * 20, goal: 260, last: 210, bands: [150, 220, 300] },
+  { name: "Sipariş", unit: "adet", actual: 140 + k * 5, goal: 150, last: 160, bands: [80, 130, 200] },
+  { name: "Puan", unit: "5 üzerinden", actual: 4.1, goal: 4.5, last: 4.3, bands: [3, 4, 5] },
 ]
 
 export function BulletChartLab() {
@@ -25,12 +27,12 @@ export function BulletChartLab() {
   let $empty = false  // shows the `empty` text when true
   // Main chart, prop by prop:
   // - data={() => …}: a function reading signals, so the chart redraws (and animates) when $k or $empty changes.
-  // - label / subtitle: the row name and the smaller line under it ("ad", "birim").
+  // - label / subtitle: the row name and the smaller line under it ("ad", "unit").
   // - value / target / previous: the bar (actual), the target tick and the dashed comparison marker (last week).
-  // - ranges="bantlar": the range ends per row, ascending; three ends give the three shaded bands behind the bar.
+  // - ranges="bands": the range ends per row, ascending; three ends give the three shaded bands behind the bar.
   // - rangeLabels: names of those bands in the tooltip, the data table and onSelect's `range` (poor / fair / good).
   // - rangeTone="neutral": grey shades (the default); "traffic" would tint them bad / warning / good.
-  // - min={0} / max={(d) => d.bantlar[2]}: every row's scale runs from 0 to its own last band end, so a 4.1 / 5 rating
+  // - min={0} / max={(d) => d.bands[2]}: every row's scale runs from 0 to its own last band end, so a 4.1 / 5 rating
   //   and 240 / 300 revenue both fill their rows proportionally. sharedScale={false} keeps those scales apart; with
   //   one shared scale the rating would be a sliver next to the revenue.
   // - orientation="horizontal", compact={false}: full rows with subtitles and ticks (both are the defaults).
@@ -58,12 +60,12 @@ export function BulletChartLab() {
       <Button class="lab-empty" size="sm" variant="ghost" on:click={() => { $empty = !$empty }}>Boşalt / geri getir</Button>
       <span class="lab-picked">Seçilen: {() => $picked}</span>
     </div>
-    <BulletChart class="lab-bullet" data={() => ($empty ? [] : make($k))} label="ad" subtitle="birim" value="gerçek" target="hedef" previous="geçen" ranges="bantlar"
-      rangeLabels={["Zayıf", "Orta", "İyi"]} rangeTone="neutral" min={0} max={(d: { bantlar: number[] }) => d.bantlar[2]} sharedScale={false}
+    <BulletChart class="lab-bullet" data={() => ($empty ? [] : make($k))} label="name" subtitle="unit" value="actual" target="goal" previous="last" ranges="bands"
+      rangeLabels={["Zayıf", "Orta", "İyi"]} rangeTone="neutral" min={0} max={(d: Row) => d.bands[2]!} sharedScale={false}
       orientation="horizontal" compact={false} axis showValue names rowHeight={60} color="brand-green" format="number" xLabel="Ölçü"
       legend="bottom" colors={["#1fa463", "#17171a", "#8a8a94"]}
-      tooltip={(p: { label: string; value: number; range: string | null }) => `${p.label}: ${p.value} (${p.range})`}
-      onSelect={(p: { label: string; range: string | null }) => { $picked = `${p.label} · ${p.range}` }}
+      tooltip={(p: BulletPoint<Row>) => `${p.label}: ${p.value} (${p.range})`}
+      onSelect={(p: BulletPoint<Row>) => { $picked = `${p.label} · ${p.range}` }}
       animate={{ easing: "spring-wobbly", stagger: 90 }} title="Haftalık karne" description="Ciro, sipariş ve puan hedefe karşı" empty="Ölçü yok" export={["svg"]} />
     {/* Second chart: `data` as a single object (no array) with the default keys label / value / target / ranges, on a
         dark theme (m:theme="night"). orientation="vertical" stands the measure up as one column, compact drops the
