@@ -21,7 +21,7 @@ export function LookingAround() {
   // cols × rows is the size of the board in LEDs; the board fills the width of its parent and keeps square LEDs.
   // transition="cut": the face changes in place (a wipe between two faces would look like a new face arriving).
   // The gaze glides between expressions on a spring; reduced motion shows each expression at once.
-  return <div sx={{ w: "20rem" }}>
+  return <div sx={{ w: "sm" }}>
     <LedBoard scenes={scenes} cols={32} rows={16} transition="cut" color="blue" label="Etrafa bakan gözler" />
   </div>
 }

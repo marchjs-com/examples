@@ -26,7 +26,7 @@ export function LedEyesLab() {
     <Card title="Her ifade">
       <div class="lab-grid" sx={{ flex: "row", gap: 2 }}>
         {/* alive={false} keeps each face still on its expression; square pixels and the green one-color look. */}
-        {EXPRESSIONS.map((e) => <div sx={{ w: "8rem" }}><LedEyes expression={e} alive={false} cols={20} rows={9} shape="square" color="green" /></div>)}
+        {EXPRESSIONS.map((e) => <LedEyes expression={e} alive={false} cols={20} rows={9} pitch={6} shape="square" color="green" />)}
       </div>
     </Card>
   </div>

@@ -10,7 +10,7 @@ export function SleepyBot() {
   // quick in-and-out never jumps.
   let $mood: "sleepy" | "surprised" = "sleepy"
   // onPointerEnter / onPointerLeave are plain pointer events on the card's wrapper.
-  return <div sx={{ w: "16rem" }} onPointerEnter={() => { $mood = "surprised" }} onPointerLeave={() => { $mood = "sleepy" }}>
+  return <div sx={{ w: "sm" }} onPointerEnter={() => { $mood = "surprised" }} onPointerLeave={() => { $mood = "sleepy" }}>
     <Card title="Üstüme gel">
       {/* alive={false}: no random blinks or glances, only the expression we set. The accessible name follows the
           expression ("Sleepy eyes" / "Surprised eyes") unless you give a label. */}
