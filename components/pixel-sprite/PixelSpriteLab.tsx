@@ -2,7 +2,8 @@
 //
 // One sprite driven by buttons (playing, frameIndex, fps), one own sprite read from `.led.json` text with parseLedJson,
 // a bigger screen (cols / rows) and the full list LED_SPRITE_NAMES as small tiles.
-import { PixelSprite, Button, Card, LED_SPRITE_NAMES, parseLedJson } from "march/ui"
+import { PixelSprite, LED_SPRITE_NAMES, parseLedJson } from "march/led"
+import { Button, Card } from "march/ui"
 
 // `.led.json` text, as it would come from a file: parseLedJson returns the sprite (or null when the text is invalid).
 const BLINKER = parseLedJson('{"fps":2,"palette":{"g":"#3ddc84"},"frames":[["g.g",".g.","g.g"],[".g.","ggg",".g."]]}')!

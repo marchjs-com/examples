@@ -2,7 +2,7 @@
 //
 // A heart drawn as text, one string per row, that beats: every half second the picture swaps between a big and a small
 // heart. LedMatrix repaints only the LEDs that changed, so a picture can change as often as you like.
-import { LedMatrix } from "march/ui"
+import { LedMatrix } from "march/led"
 import { onFrame } from "march/motion"
 
 // Pixel art as text: "." is off, any other character is lit; the palette colors "r".

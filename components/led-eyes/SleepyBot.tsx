@@ -3,7 +3,8 @@
 // A pair of eyes that get sleepy when you leave them alone and wake up when you come back: hovering the card makes
 // them look surprised, leaving it makes them sleepy. One prop (expression) does all of it; the eyes glide between
 // expressions on their own.
-import { LedEyes, Card } from "march/ui"
+import { LedEyes } from "march/led"
+import { Card } from "march/ui"
 
 export function SleepyBot() {
   // A live expression: the component follows it. Changing it starts a spring from wherever the eyes are now, so a

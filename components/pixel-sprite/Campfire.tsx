@@ -2,7 +2,7 @@
 //
 // A crackling pixel campfire under a starry sky: three built-in animated sprites side by side. Each sprite plays its
 // own frames at its own speed on the motion engine's clock; nothing else is needed.
-import { PixelSprite } from "march/ui"
+import { PixelSprite } from "march/led"
 
 export function Campfire() {
   // sprite picks a built-in drawing by name; fps overrides its speed; pitch is the size of one LED in px.

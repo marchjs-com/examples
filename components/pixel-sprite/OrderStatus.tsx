@@ -3,7 +3,8 @@
 // A café's pickup screen: each order shows a pixel icon for its state (brewing coffee, ready check, a bell to call the
 // customer) next to the name. Your own sprite (the `.led.json` format) joins the built-in ones with defineSprite, and
 // then works as `:name:` in any LED text too.
-import { PixelSprite, PixelFont, defineSprite, Card } from "march/ui"
+import { PixelSprite, PixelFont, defineSprite } from "march/led"
+import { Card } from "march/ui"
 
 // Your own sprite: frames of rows ("." off), a palette for its characters and a frame rate. This is exactly what a
 // `.led.json` file holds, so a designer can draw it in a pixel editor and you can load it with parseLedJson.

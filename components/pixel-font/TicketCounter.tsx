@@ -3,7 +3,8 @@
 // The "now serving" display of a bank or a pharmacy: a big ticket number and the desk it goes to. Digits in the pixel
 // font are all the same width, so the number never jumps as it changes; a fixed `cols` keeps the screen the same size
 // for 1 to 3 digits.
-import { PixelFont, Button, Card } from "march/ui"
+import { PixelFont } from "march/led"
+import { Button, Card } from "march/ui"
 
 export function TicketCounter() {
   let $ticket = 41

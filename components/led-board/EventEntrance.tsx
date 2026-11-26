@@ -3,7 +3,8 @@
 // The LED sign at the door of an event: it welcomes people, points them to the right gate, shows the time and counts
 // down to the opening talk. Staff can pause it (Space on the focused board) or skip to the next scene (arrow keys).
 // Use this pattern for signage: a list of scenes with their own options, one board, one clock.
-import { LedBoard, Card } from "march/ui"
+import { LedBoard } from "march/led"
+import { Card } from "march/ui"
 
 // The talk starts at the next full hour (so the countdown always has something to count).
 const start = new Date()

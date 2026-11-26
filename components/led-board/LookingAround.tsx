@@ -3,7 +3,7 @@
 // One face on a small LED board: the eyes look left, then right, then up, blink and smile. Nothing else. It shows the
 // smallest useful scene list: each scene is one object, and the board plays them one after another in a loop.
 // Use this when you want a friendly "mascot" on an empty state, a loading screen or a kiosk.
-import { LedBoard } from "march/ui"
+import { LedBoard } from "march/led"
 
 // The scenes, in order. `eye` picks an expression; `duration` is how long a scene stays (ms). Eye scenes keep the
 // eyes "alive" by default: they also blink on their own and glance a little between the scripted moves.

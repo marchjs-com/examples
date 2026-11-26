@@ -2,7 +2,8 @@
 //
 // One picture shown with every look: round LEDs, square pixels and glow tubes; gap, roundness, bloom, ghost, scanlines;
 // the color modes; the three panels; a fixed size (cols / rows) bigger than the picture, and pitch.
-import { LedMatrix, Card } from "march/ui"
+import { LedMatrix } from "march/led"
+import { Card } from "march/ui"
 
 // a smiling face with two colors from the palette ("y" yellow, "p" pink cheeks)
 const FACE = ["..yyyy..", ".yyyyyy.", "yy.yy.yy", "yyyyyyyy", "pyyyyyyp", "yy....yy", ".yyyyyy.", "..yyyy.."]

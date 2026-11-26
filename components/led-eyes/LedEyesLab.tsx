@@ -2,7 +2,8 @@
 //
 // A grid of faces, one per expression, and one face driven by buttons that uses every prop: expression, look (an
 // exact gaze), mouth, alive, follow, blinkEvery, size, the LED look, label and motion.
-import { LedEyes, Button, Card } from "march/ui"
+import { LedEyes } from "march/led"
+import { Button, Card } from "march/ui"
 
 const EXPRESSIONS = ["open", "look-left", "look-right", "look-up", "look-down", "surprised", "sleepy", "happy", "angry", "sad", "love", "closed"] as const
 

@@ -2,7 +2,8 @@
 //
 // Type your name and see it in LED letters. PixelFont draws text in March's own pixel font (every Turkish letter
 // included) on a screen exactly as wide as the text, so it grows as you type.
-import { PixelFont, TextInput, Field } from "march/ui"
+import { PixelFont } from "march/led"
+import { TextInput, Field } from "march/ui"
 
 export function NeonName() {
   let $name = "Çağla"

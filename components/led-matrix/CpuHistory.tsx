@@ -3,7 +3,8 @@
 // A server rack's front panel: the last 32 seconds of CPU load as columns of LEDs, green when calm, amber when busy, red
 // when hot. You draw the picture yourself with ledFrame / setLed (one byte of brightness per LED and an optional color)
 // and hand it to LedMatrix; it only repaints the columns that changed.
-import { LedMatrix, ledFrame, setLed, ledColor, Card } from "march/ui"
+import { LedMatrix, ledFrame, setLed, ledColor } from "march/led"
+import { Card } from "march/ui"
 import { onFrame } from "march/motion"
 
 const W = 32, H = 10

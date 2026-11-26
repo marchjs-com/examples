@@ -2,7 +2,8 @@
 //
 // The two fonts with the whole Turkish alphabet; spacing, ink, cols / align / margin; the LED look; and textWidth /
 // wrapText, which tell you how wide a text is in LEDs and how it breaks into lines (useful for your own LED drawings).
-import { PixelFont, Card, textWidth, wrapText } from "march/ui"
+import { PixelFont, textWidth, wrapText } from "march/led"
+import { Card } from "march/ui"
 
 const ALPHABET = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
 

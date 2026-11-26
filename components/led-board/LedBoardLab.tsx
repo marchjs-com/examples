@@ -4,7 +4,8 @@
 // kind of scene: text, emoji, eyes with a mouth, pixel art, a live score, the clock, a countdown, a ticker and audio bars.
 // The smaller boards below show the props that are easier to see on their own (loop, playing, live text, motion off).
 // Read it as a reference: each prop is commented where it is used.
-import { LedBoard, Button, Card } from "march/ui"
+import { LedBoard } from "march/led"
+import { Button, Card } from "march/ui"
 import { audioSource } from "march/audio"
 
 // a synthesized sound for the bars scene: no file, no permission; it starts from a click (browsers require a gesture)

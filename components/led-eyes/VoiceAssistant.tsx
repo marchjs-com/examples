@@ -3,7 +3,8 @@
 // The face of a voice assistant: it listens (looks at you, follows the pointer), thinks (looks up), and talks (the
 // mouth moves). A status line says the same thing in words, for everyone who does not see the face.
 // Use this pattern when a face should mirror an app state: map each state to an expression and a mouth.
-import { LedEyes, Button, Card } from "march/ui"
+import { LedEyes } from "march/led"
+import { Button, Card } from "march/ui"
 
 type State = "listening" | "thinking" | "talking"
 
