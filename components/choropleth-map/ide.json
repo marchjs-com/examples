@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Türkiye'nin 81 ili hazır: değere göre renk, sınıflar, bölgeye yakınlaş, iller batıdan doğuya renklenir.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "CoffeeMap.tsx",
+			"src": "examples://components/choropleth-map/CoffeeMap.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SalesByProvince.tsx",
+			"src": "examples://components/choropleth-map/SalesByProvince.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ChoroplethMapLab.tsx",
+			"src": "examples://components/choropleth-map/ChoroplethMapLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ChoroplethMapLab.test.tsx",
+			"src": "examples://components/choropleth-map/ChoroplethMapLab.test.tsx"
+		}
+	]
+}

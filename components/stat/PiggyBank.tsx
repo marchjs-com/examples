@@ -1,29 +1,33 @@
-// PiggyBank: the creative-minimal Stat example.
-//
-// What it shows: a piggy bank. Every press on "₺50 at" adds 50 to the savings; the KPI box shows the new amount, the
-// change against the first week and a trend line that gets one point longer with each deposit.
-// When to use this pattern: one number that has a history. Give `Stat` the list of past values as `spark` and the
-// first one as `previous`, and it draws the change and the trend line by itself.
-//
-// Animation: Stat has no motion of its own to turn off here. The only change is the new value being drawn.
-// Accessibility: the arrow is decoration; screen readers hear "Up", "Down" or "No change" before the change, so the
-// direction is never told by colour alone. The sparkline is an image named by the label with a summary of its values.
 import { Stat } from "march/charts"
 import { Button } from "march/ui"
 import { wallet } from "march/icons"
 
+// A piggy bank: a playful, minimal Stat.
+// Every "₺50 at" click drops 50 lira into the bank. The big number counts up to the new total, the change is measured
+// against the first week, and the trend line under the value grows by one point per click.
+// Use a Stat like this for a single headline number that changes over time and whose direction matters at a glance:
+// savings, followers, streak days.
+
 export function PiggyBank() {
-  // The savings after each week. Reassigning the whole array (not pushing into it) is what makes the view update.
+  // `$history` is a signal: one saved total per week. The last entry is "now", the first is the baseline.
+  // Replacing the array (not pushing into it) is what tells March the value changed.
   let $history = [120, 160, 210, 230]
-  // The current savings: the last item of the history.
   const now = () => $history[$history.length - 1]
+  // Stat props:
+  // - icon / label: a wallet icon next to the "Kumbaram" (my piggy bank) label.
+  // - value: the current total; previous: the first week. With no `delta` prop, Stat computes the change itself as
+  //   (value − previous) / |previous| and shows it with an arrow: green and up, because more savings is good.
+  // - format={["money", "TRY"]}: a pipe with an argument, so the value reads as Turkish lira with its symbol.
+  // - spark: the whole history as a trend line under the value; it morphs as new points arrive.
+  // - hint: the text after the change, saying what it is compared against (here: vs the first week).
+  // Motion: no `animate` prop, so the default spring applies: the number counts from the old total to the new one
+  // (formatted every frame) and the sparkline morphs. animate={false} shows changes at once, animate="out" glides
+  // without overshoot, and reduced motion makes it jump automatically.
+  // Accessibility: screen readers hear "Up" before the change, so the direction is never told by color alone.
+  // To adapt: put your own number list in $history; for a cost, add `invert` so a rise turns red.
   return <div sx={{ flex: "col", gap: 2 }}>
-    {/* Appends a new point: the old amount plus 50. `on:click` is the event handler of a Button. */}
+    {/* A new array with one more total: the value, the change and the sparkline all follow from it. */}
     <Button on:click={() => { $history = [...$history, now() + 50] }}>🐷 ₺50 at</Button>
-    {/* label: the text over the value. value: the current amount, formatted by `format`. ["money", "TRY"] is a pipe
-        name with its argument (Turkish lira). previous: the value to compare with; Stat computes the change as
-        (value - previous) / |previous| and shows it with an arrow and a sign, green for an increase. spark: the
-        data of the trend line under the value. hint: the text after the change. icon: a March icon beside the label. */}
     <Stat icon={wallet} label="Kumbaram" value={now()} previous={$history[0]} format={["money", "TRY"]} spark={$history} hint="ilk haftaya göre" />
   </div>
 }

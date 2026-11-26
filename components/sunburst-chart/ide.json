@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Hiyerarşi halkalar olur; bir dala tıkla, içine yakınlaş, ortadan geri çık.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "Playlist.tsx",
+			"src": "examples://components/sunburst-chart/Playlist.tsx"
+		},
+		{
+			"type": "code",
+			"name": "DiskUsage.tsx",
+			"src": "examples://components/sunburst-chart/DiskUsage.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SunburstChartLab.tsx",
+			"src": "examples://components/sunburst-chart/SunburstChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SunburstChartLab.test.tsx",
+			"src": "examples://components/sunburst-chart/SunburstChartLab.test.tsx"
+		}
+	]
+}

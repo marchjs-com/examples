@@ -1,18 +1,10 @@
-// Tests for BarChartLab. They run in MarchIDE's Tests tab every time you save.
-//
-// How these tests are written (march/testing):
-// - renderTest(() => <BarChartLab />) mounts the component in a fresh, isolated root and returns a handle `s`.
-// - s.get(selector) returns one element, s.sees(text) says whether text is on screen, s.click(selector) clicks like a
-//   user and waits until the view has updated (so those tests are async and await it), and s.flush() waits for pending
-//   updates after you dispatched an event yourself.
-// - The tests check what a user or a screen reader can observe (how many bars exist, the SVG title and description,
-//   visible text) rather than internal state. Chart parts have classes such as .m-chart-bar, listed in the docs.
-// To adapt them: copy one test, change the selector or the expected value.
 import { test, expect, renderTest } from "march/testing"
 import { BarChartLab } from "./BarChartLab.tsx"
 
-// Six months with two series make twelve bars. `title` and `description` become the SVG's <title> and <desc>, which
-// is the chart's accessible name and description.
+// BarChartLab's tests: they run in MarchIDE's Tests tab when you save. They check what users and screen readers get
+// (bars, labels, texts), not how far an animation has run.
+
+// Proves two series over six months make twelve bars, and the accessible name and description reach the SVG.
 test("altı ay iki seri: on iki çubuk, başlık ve açıklama", () => {
   const s = renderTest(() => <BarChartLab />)
   const chart = s.get(".lab-bars")!
@@ -21,8 +13,7 @@ test("altı ay iki seri: on iki çubuk, başlık ve açıklama", () => {
   expect(chart.querySelector("svg desc")!.textContent).toBe("Ay ay yeni ve eski üyeler")
 })
 
-// onSelect: a click on a bar reports its point; the Lab prints it. The click event is dispatched by hand (bubbling,
-// like a real one) and s.flush() waits for the text to update.
+// Proves a click reaches onSelect with the bar's month.
 test("bir çubuğa tıklamak onu seçer", async () => {
   const s = renderTest(() => <BarChartLab />)
   s.get(".lab-bars .m-chart-bar")!.dispatchEvent(new MouseEvent("click", { bubbles: true }))
@@ -30,15 +21,30 @@ test("bir çubuğa tıklamak onu seçer", async () => {
   expect(s.get(".lab-picked")!.textContent).toContain("Oca")
 })
 
-// When the data becomes an empty list the chart shows the `empty` content instead of bars.
+// Proves the empty text replaces the chart when the data runs out.
 test("veri boşalınca boş metni görünür", async () => {
   const s = renderTest(() => <BarChartLab />)
   await s.click(".lab-empty")
   expect(s.sees("Henüz veri yok")).toBe(true)
 })
 
-// The second chart (stacked and horizontal, with the legend and grid off) still draws one bar per month and series.
+// Proves the stacked horizontal chart draws every bar too.
 test("yığılmış yatay grafik de on iki çubuk çizer", () => {
   const s = renderTest(() => <BarChartLab />)
   expect(s.get(".lab-stack")!.querySelectorAll(".m-chart-bar").length).toBe(12)
+})
+
+// Proves value labels and the reference marks (target and average) are drawn with their texts.
+test("değer etiketleri, hedef ve ortalama çizgisi", () => {
+  const s = renderTest(() => <BarChartLab />)
+  const chart = s.get(".lab-bars")!
+  expect(chart.querySelectorAll(".m-chart-value").length).toBe(12)
+  expect(chart.textContent).toContain("Hedef")
+})
+
+// Proves fewer months shrink the data table at once (the leaving bars only sink visually).
+test("üç aya inince tablo üç satır olur", async () => {
+  const s = renderTest(() => <BarChartLab />)
+  await s.click(".lab-short")
+  expect(s.get(".lab-bars")!.querySelectorAll("table tbody tr").length).toBe(3)
 })

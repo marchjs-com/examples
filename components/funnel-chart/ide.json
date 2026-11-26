@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Adımlar ve dönüşüm: huni, çubuk ya da piramit; adımlar arasında kayıp, aşamalar yukarıdan dökülür.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "IdeaFunnel.tsx",
+			"src": "examples://components/funnel-chart/IdeaFunnel.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SignupFunnel.tsx",
+			"src": "examples://components/funnel-chart/SignupFunnel.tsx"
+		},
+		{
+			"type": "code",
+			"name": "FunnelChartLab.tsx",
+			"src": "examples://components/funnel-chart/FunnelChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "FunnelChartLab.test.tsx",
+			"src": "examples://components/funnel-chart/FunnelChartLab.test.tsx"
+		}
+	]
+}

@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Gerçekleşen, hedef ve nitel aralıklar tek satırda; tablolar için sıkı görünüm.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "HabitTracker.tsx",
+			"src": "examples://components/bullet-chart/HabitTracker.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SalesTeam.tsx",
+			"src": "examples://components/bullet-chart/SalesTeam.tsx"
+		},
+		{
+			"type": "code",
+			"name": "BulletChartLab.tsx",
+			"src": "examples://components/bullet-chart/BulletChartLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "BulletChartLab.test.tsx",
+			"src": "examples://components/bullet-chart/BulletChartLab.test.tsx"
+		}
+	]
+}

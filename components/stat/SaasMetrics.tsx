@@ -1,36 +1,37 @@
-// SaasMetrics: the real-life Stat example.
-//
-// What it shows: the monthly dashboard of a SaaS product: members, revenue, churn rate and response time, each as a
-// Stat inside a Card, in a two-column Grid.
-// When to use this pattern: a KPI board where every figure is compared with an earlier period. Two ways to give the
-// change: `previous` (Stat computes the change from the old value) or `delta` (you already have the fraction, 0.07
-// meaning +7 %).
-//
-// The important part is `invert`. By default an increase is green and a decrease red. For costs, churn or latency a
-// decrease is the good news, so those Stats pass `invert` and the colours swap. The sign and the arrow still tell the
-// real direction, so the meaning never depends on colour alone.
-// Animation: none of its own. Accessibility: the arrow is decoration; screen readers hear "Up", "Down" or "No change"
-// before the change, and a sparkline is an image named by the label with a summary of its values.
 import { Stat } from "march/charts"
 import { Card, Grid } from "march/ui"
 import { users, creditCard, activity, clock } from "march/icons"
 
-// Six months of data for the trend lines (the last value is the current one).
+// A SaaS product's monthly dashboard: a real-life row of four Stat boxes.
+// Shows members and revenue (more is good), churn rate and response time (less is good), each with its change.
+// Use a grid of Stats like this at the top of a dashboard: the four numbers a manager reads before anything else.
+// It also shows the two ways to give the change (computed from `previous`, or a ready `delta`) and `invert` for
+// metrics where a decrease is the good news.
+
+// Six months of history for the two trend lines. Replace them with your own monthly numbers.
 const months = [41200, 42800, 44100, 45900, 47300, 48210]
 const mrr = [182000, 189000, 194500, 201000, 212000, 219400]
 
 export function SaasMetrics() {
-  // Grid cols={2}: two equal columns; gap={3} is a step of the spacing scale.
+  // Grid cols={2} lays the four cards out two by two; each Card gives its Stat a surface and padding.
+  //
+  // Stat props, card by card:
+  // - Members: value + previous, so Stat computes the change (+1.9 %); spark draws the six months under the value.
+  // - Revenue: the same, with format={["money", "TRY"]} so the value reads as Turkish lira.
+  // - Churn rate: delta={-0.18} gives the change directly as a fraction (−18 %) when no previous value is at hand.
+  //   `invert` says a decrease is good, so the down arrow is green. format={["percent", 1]}: 0.021 → 2.1 %.
+  // - Response time: delta={0.07} is a rise, and with `invert` a rise is bad, so it shows red; a function format adds
+  //   the "ms" unit.
+  // - hint: the text after each change, here "vs last month", "improvement" and "got slower".
+  // Motion: no `animate` prop, so the default spring applies: each number counts up from 0 on first draw and the
+  // sparklines draw in. animate={{ enter: false }} shows the first values at once; animate={false} turns motion off;
+  // reduced motion is honoured automatically.
+  // Accessibility: good and bad are told by the arrow and the sign as well as the color, and screen readers hear
+  // "Up" / "Down" before each change; each sparkline is an image named after its label.
   return <Grid cols={2} gap={3}>
-    {/* previous: the change is computed from it. spark: the trend line under the value. hint: text after the change.
-        Without `format` the value is shown as a plain number (the default is "number"). */}
     <Card><Stat icon={users} label="Toplam üye" value={48210} previous={47300} spark={months} hint="geçen aya göre" /></Card>
-    {/* format={["money", "TRY"]}: a pipe name with its argument, so 219400 is written as an amount in lira. */}
     <Card><Stat icon={creditCard} label="Aylık gelir" value={219400} previous={212000} format={["money", "TRY"]} spark={mrr} hint="geçen aya göre" /></Card>
-    {/* delta is given directly as a fraction (-0.18 = -18 %). invert: a decrease is good here, so it shows green.
-        format={["percent", 1]} writes 0.021 as a percentage with one decimal. */}
     <Card><Stat icon={activity} label="Kayıp oranı" value={0.021} delta={-0.18} invert format={["percent", 1]} hint="iyileşme" /></Card>
-    {/* format can also be a function: here it adds the unit. delta +7 % with invert is bad (slower), so it shows red. */}
     <Card><Stat icon={clock} label="Yanıt süresi" value={182} delta={0.07} invert format={(v: number) => `${v} ms`} hint="yavaşladı" /></Card>
   </Grid>
 }

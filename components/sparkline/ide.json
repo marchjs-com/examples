@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "Eksensiz küçük çizgi: tablo hücresinde, liste satırında, göstergede.",
+	"description": "Eksensiz küçük çizgi, çubuk ya da kazanç / kayıp: tablo hücresinde, liste satırında, göstergede.",
 	"sources": [
 		{
 			"type": "code",

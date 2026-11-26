@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Kategoriler zamanla akan katmanlar olur; dalgalı, ortalı ya da %100 taban.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "MoodRiver.tsx",
+			"src": "examples://components/stream-graph/MoodRiver.tsx"
+		},
+		{
+			"type": "code",
+			"name": "NewsTopics.tsx",
+			"src": "examples://components/stream-graph/NewsTopics.tsx"
+		},
+		{
+			"type": "code",
+			"name": "StreamGraphLab.tsx",
+			"src": "examples://components/stream-graph/StreamGraphLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "StreamGraphLab.test.tsx",
+			"src": "examples://components/stream-graph/StreamGraphLab.test.tsx"
+		}
+	]
+}

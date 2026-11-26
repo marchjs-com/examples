@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Hiyerarşi kutulara bölünür; gruba gir, kırıntıdan çık, değere göre renk.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "CandyJar.tsx",
+			"src": "examples://components/treemap/CandyJar.tsx"
+		},
+		{
+			"type": "code",
+			"name": "DiskUsage.tsx",
+			"src": "examples://components/treemap/DiskUsage.tsx"
+		},
+		{
+			"type": "code",
+			"name": "TreemapLab.tsx",
+			"src": "examples://components/treemap/TreemapLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "TreemapLab.test.tsx",
+			"src": "examples://components/treemap/TreemapLab.test.tsx"
+		}
+	]
+}

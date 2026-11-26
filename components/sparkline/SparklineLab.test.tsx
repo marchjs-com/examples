@@ -1,19 +1,12 @@
-// Tests for SparklineLab. They run in MarchIDE's Tests tab every time you save.
-//
-// How these tests are written (march/testing):
-// - renderTest(() => <SparklineLab />) mounts the component in a fresh, isolated root and returns a handle `s`.
-// - s.get(selector) finds one element (or null) by CSS selector. s.click(".selector") clicks the element that matches and waits
-//   until the view has updated, which is why the tests that click are async and await it.
-// - A Sparkline is an svg with role="img", so its accessible name (aria-label: the title plus a summary of the values) is the
-//   main thing a screen reader user gets; the tests read it, together with the parts that are drawn (the area, the last-point
-//   marker) and the size attributes.
-// To adapt them: copy one test, change the selector or the expected text. The part classes (.m-chart-area, .m-chart-marker)
-// are the classes Sparkline puts on its own parts.
 import { test, expect, renderTest } from "march/testing"
 import { SparklineLab } from "./SparklineLab.tsx"
 
-// `area` draws the filled area; the accessible name starts with the title and the summary is formatted with `format`, so the
-// unit text ("adet") shows up in it.
+// Tests for SparklineLab. They run in the IDE's Tests tab when the file is saved.
+// renderTest mounts the Lab in a sandbox; s.get / s.click query and drive it like a user would.
+// A sparkline has nothing to focus, so its accessible name (aria-label: title + summary) is what screen readers get;
+// most tests check that summary, so a change that silently breaks it shows up here first.
+
+// Proves `area` draws the fill, and that the spoken summary starts with the title and uses `format` ("adet").
 test("çizgi ve alan çizilir; ekran okuyucu özeti biçimli", () => {
   const s = renderTest(() => <SparklineLab />)
   const svg = s.get(".lab-nums svg")!
@@ -22,8 +15,7 @@ test("çizgi ve alan çizilir; ekran okuyucu özeti biçimli", () => {
   expect(svg.getAttribute("aria-label")!).toContain("adet")
 })
 
-// The data is a function of a signal: adding a value redraws the line and the summary in the accessible name changes
-// (it names the number of values and the last value, for example).
+// Proves the data is reactive: appending a value changes the summary, so screen readers hear the new numbers too.
 test("değer eklenince özet güncellenir", async () => {
   const s = renderTest(() => <SparklineLab />)
   const before = s.get(".lab-nums svg")!.getAttribute("aria-label")
@@ -31,18 +23,33 @@ test("değer eklenince özet güncellenir", async () => {
   expect(s.get(".lab-nums svg")!.getAttribute("aria-label")).not.toBe(before)
 })
 
-// With no data the name is the title followed by the `empty` text, so a screen reader still hears what the chart is and that it
-// has nothing to show.
+// Proves `empty`: with no data the summary is exactly the title and the empty text.
 test("veri boşalınca boş metni söylenir", async () => {
   const s = renderTest(() => <SparklineLab />)
   await s.click(".lab-empty")
   expect(s.get(".lab-nums svg")!.getAttribute("aria-label")).toBe("Satış: Satış yok")
 })
 
-// dot={false} hides the marker on the last point, and width is written as the svg's width attribute.
+// Proves dot={false} hides the last-point marker, and that `width` reaches the SVG.
 test("dot={false}: son nokta gizli; boyut yazılır", () => {
   const s = renderTest(() => <SparklineLab />)
   const obj = s.get(".lab-obj svg")!
   expect(obj.querySelector(".m-chart-marker")!.getAttribute("visibility")).toBe("hidden")
   expect(obj.getAttribute("width")).toBe("120")
+})
+
+// Proves the two block variants: the bar variant draws one block per value (and its summary counts them), the win /
+// loss strip draws 4 up and 2 down blocks and says so in words; appending a value adds exactly one bar.
+test("variant: sütunlar her değer için bir blok; artı / eksi şeridi galibiyet ve yenilgileri söyler", async () => {
+  const s = renderTest(() => <SparklineLab />)
+  const q = (sel: string) => s.container.querySelector<HTMLElement>(sel)
+  const bars = () => q(".lab-bars svg")!.querySelectorAll(".m-sparkline-block").length
+  const n = bars()
+  expect(q(".lab-bars svg")!.getAttribute("aria-label")).toContain(`Günlük satış: ${n} values`)
+  const form = q(".lab-form svg")!
+  expect(form.querySelectorAll(".m-sparkline-block.is-pos").length).toBe(4)
+  expect(form.querySelectorAll(".m-sparkline-block.is-neg").length).toBe(2)
+  expect(form.getAttribute("aria-label")).toBe("Son maçlar: 4 wins, 2 losses, 1 ties")
+  await s.click(q(".lab-add")!)
+  expect(bars()).toBe(n + 1)
 })

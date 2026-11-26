@@ -1,6 +1,6 @@
 {
 	"layout": "component",
-	"description": "Gruplu ya da yığılmış, dikey ya da yatay; veri değişince çubuklar kayar.",
+	"description": "Gruplu ya da yığılmış, dikey ya da yatay; çubuklar tabandan büyür, kayar, değer etiketleri ve hedef çizgisi.",
 	"sources": [
 		{
 			"type": "code",
