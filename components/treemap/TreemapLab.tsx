@@ -11,11 +11,13 @@ import { Button, Card } from "march/ui"
 // A monthly budget: three groups (food, home, fun) with two items each. The keys are Turkish on purpose to show that
 // childrenOf / value / label / id can read any shape: `alt` holds the children, `tutar` the amount, `ad` the name,
 // `kod` a stable id and `fark` the change from last month in percent (used by the color-scale chart below).
-// `k` grows three of the amounts, so the tiles visibly resize.
+// `k` grows three of the amounts, so the tiles visibly resize. Every group is kept large enough (Keyif ≈ 15% of the
+// total) that it has room for its header and tiles: Treemap draws a branch too small for that as one tile (still
+// drillable), which would leave two groups instead of three on a narrow preview.
 const make = (k: number) => [
   { kod: "yemek", ad: "Yemek", alt: [{ kod: "market", ad: "Market", tutar: 5200 + k * 400, fark: 8 + k }, { kod: "restoran", ad: "Restoran", tutar: 1800, fark: -12 }] },
   { kod: "ev", ad: "Ev", alt: [{ kod: "kira", ad: "Kira", tutar: 14000, fark: 0 }, { kod: "fatura", ad: "Faturalar", tutar: 2100 + k * 150, fark: 4 }] },
-  { kod: "keyif", ad: "Keyif", alt: [{ kod: "sinema", ad: "Sinema", tutar: 600, fark: 25 }, { kod: "kitap", ad: "Kitap", tutar: 450 + k * 100, fark: -5 }] },
+  { kod: "keyif", ad: "Keyif", alt: [{ kod: "sinema", ad: "Sinema", tutar: 2400, fark: 25 }, { kod: "kitap", ad: "Kitap", tutar: 1600 + k * 100, fark: -5 }] },
 ]
 
 export function TreemapLab() {
