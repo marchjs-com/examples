@@ -32,6 +32,8 @@ test("biçim düğmesi keman çizer", async () => {
   const s = renderTest(() => <BoxPlotLab />)
   await s.click(".lab-mode")
   expect(s.get(".lab-box .m-boxplot-mode-violin")).not.toBe(null)
+  // the violin grows in from the median (its entrance animation): give it a moment before reading its outline
+  await new Promise((r) => setTimeout(r, 900))
   expect(s.get(".lab-box .m-boxplot-violin")!.getAttribute("d")).toContain("M")
 })
 
