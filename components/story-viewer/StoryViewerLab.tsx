@@ -50,7 +50,7 @@ export function StoryViewerLab(props: { startOpen?: boolean }) {
     <Badge tone="primary">{$log}</Badge>
     <span sx={{ text: "xs", color: "muted" }}>{`görülen: ${$seen.join(", ") || "-"}`}</span>
     {/* open and onClose: the $open state drives them, written as functions so they stay live. groups: the data.
-        start: the person to open at. duration: the default time per story in ms; an item's own duration wins. onSeen:
+        start: the person to open at. duration: the default time per story in ms; the duration on an item wins. onSeen:
         called for each story shown. onReply: shows the reply field and receives the typed text. onLike and liked: show
         the heart; liked tells which stories are liked and onLike receives the new state. progress, avatar, time,
         pauseButton, closeButton, arrows and sentNote are all on by default; they are written out here to show each can
