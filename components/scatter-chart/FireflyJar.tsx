@@ -24,6 +24,8 @@ export function FireflyJar() {
   // - animate={{ easing: "spring-wobbly", stagger: 25 }}: a bouncy spring, each firefly 25 ms after the previous, so the
   //   swarm ripples instead of moving as one block. animate={false} switches motion off; reduced motion is honoured
   //   automatically.
+  // - marks: a reference line drawn as the jar's lid at y = 94, just above the highest firefly (y never passes 88).
+  //   Marks also take { x }, bands ({ y: [from, to] }) and notes ({ at: [x, y], label }); marks={[]} removes the lid.
   // - title: the SVG's accessible name; the hidden data table still lists every point for screen readers.
   return <div sx={{ flex: "col", gap: 2 }}>
     <div sx={{ flex: ["row", "wrap"], gap: 2 }}>
@@ -34,6 +36,7 @@ export function FireflyJar() {
     </div>
     <ScatterChart data={() => Array.from({ length: $count }, (_, i) => spot(i, $k))} key="id" size="glow" sizeRange={[3, 11]}
       shape="diamond" colors={["#f5c542"]} grid={false} xMin={0} xMax={100} yMin={0} yMax={100} tooltip={false}
-      animate={{ easing: "spring-wobbly", stagger: 25 }} title="Ateşböceği kavanozu" height={240} />
+      marks={[{ y: 94, label: "Kapak 🫙" }]} animate={{ easing: "spring-wobbly", stagger: 25 }} title="Ateşböceği kavanozu"
+      height={240} />
   </div>
 }

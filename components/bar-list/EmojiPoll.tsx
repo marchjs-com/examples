@@ -7,10 +7,17 @@ import { BarList } from "march/charts"
 
 export function EmojiPoll() {
   // The rows use BarList's default keys `label` and `value`, so no x / y props are needed.
-  let $votes = [{ label: "🔥", value: 1730 }, { label: "😂", value: 2410 }, { label: "🤔", value: 640 }, { label: "😍", value: 1980 }]
+  // Ten emoji, a real poll's worth (and enough for `limit` to have something to cut).
+  let $votes = [
+    { label: "🔥", value: 1730 }, { label: "😂", value: 2410 }, { label: "🤔", value: 640 }, { label: "😍", value: 1980 },
+    { label: "🙌", value: 1210 }, { label: "😭", value: 890 }, { label: "✨", value: 1460 }, { label: "👀", value: 520 },
+    { label: "🥳", value: 1050 }, { label: "💀", value: 380 },
+  ]
   // BarList props:
   // - data={() => $votes}: a function reading the signal, so every vote redraws the list.
   // - No `sort` prop: rows are sorted largest first by default, which is what makes the ranking move.
+  // - No `limit` prop: all ten rows are listed. limit={5} would keep only the top five (a leaderboard), with rows
+  //   sliding in and out as the ranking changes.
   // - title: the accessible name of the list ("the most loved emoji").
   // - onSelect: makes each row a button and receives { label, value, rank, datum }; here it adds 250 votes to the
   //   clicked emoji by replacing the array (a new array is what tells March the data changed).

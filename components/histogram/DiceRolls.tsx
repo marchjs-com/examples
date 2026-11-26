@@ -14,17 +14,23 @@ const die = () => { seed = (seed * 16807) % 2147483647; return 1 + (seed % 6) }
 
 export function DiceRolls() {
   // Every roll's sum, as plain numbers. A Histogram reads plain numbers directly, so no `value` prop is needed.
-  let $rolls: number[] = []
+  // The game starts with 30 rolls on the table, so the bars and the curve have a shape from the first look.
+  let $rolls: number[] = Array.from({ length: 30 }, () => die() + die())
   // Adds n new sums. A new array is assigned (not pushed into), which is what makes the signal notify the chart.
   const roll = (n: number) => { $rolls = [...$rolls, ...Array.from({ length: n }, () => die() + die())] }
   // Histogram props:
   // - data={() => $rolls}: a function reading the signal, so the chart re-bins and animates after every click.
-  // - binWidth={1} + domain={[2, 13]}: exactly one bar per possible sum, 2 to 12 (the domain's end is the last bin's
-  //   right edge). Without them the chart would pick "nice" bins itself, which could merge two sums into one bar.
+  // - bins={11} + domain={[2, 13]}: eleven bins over 2–13, exactly one bar per possible sum, 2 to 12 (the domain's end
+  //   is the last bin's right edge). Without them the chart would pick bins itself, which could merge two sums into one
+  //   bar; fewer bins merge neighbouring sums, more split each sum. binWidth={1} would pin the width instead of the count.
   // - curve="normal": a fitted normal curve over the bars ("kde" would follow the data more closely instead).
   // - gap={3}: 3 px between bars (default 1 px), so each sum reads as its own block.
+  // - marks: a reference line at the average of the rolls, labelled with its value; it slides towards 7 as the throws
+  //   pile up. Marks also take "median", fixed values ({ x: 7 }) and bands ({ x: [6, 9] }). density={true} would turn
+  //   the y axis into shares instead of counts (the bars keep their shape).
   // - tooltip: custom text per bar from the bin's lower edge (x0) and its count.
-  // - empty: shown before the first roll, telling the user what to do instead of drawing an empty axis.
+  // - empty: shown after "Sıfırla" (reset) empties the table, telling the user what to do instead of drawing an empty
+  //   axis.
   // - animate={{ easing: "spring-wobbly" }}: bars grow with a bouncy spring that suits a game. Bars are keyed by their
   //   bin, so on each roll the existing bars stretch to their new heights. animate={false} turns motion off,
   //   animate="out" gives a calm glide; reduced motion is honoured automatically.
@@ -38,7 +44,7 @@ export function DiceRolls() {
       {/* A live roll counter: the function child re-renders whenever $rolls changes. */}
       <span sx={{ text: "sm", color: "muted" }}>{() => `${$rolls.length} atış`}</span>
     </div>
-    <Histogram data={() => $rolls} binWidth={1} domain={[2, 13]} curve="normal" gap={3}
+    <Histogram data={() => $rolls} bins={11} domain={[2, 13]} curve="normal" gap={3} marks={[{ x: "average" }]}
       tooltip={(p: { x0: number; count: number }) => `Toplam ${p.x0}: ${p.count} kez`}
       empty="Zarları atmak için bir düğmeye bas" animate={{ easing: "spring-wobbly" }} title="İki zarın toplamı" height={220} />
   </div>

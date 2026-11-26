@@ -18,6 +18,8 @@ export function PiggyBank() {
   // - start={20} + startLabel="Kumbara": the bank's opening amount, drawn as the first column from zero.
   // - totals="end" + totalLabel: a total column at the end, labelled "now", that always shows the running sum.
   // - format: money in TRY, used by the bar labels, the tooltip and the hidden data table.
+  // - marks: a goal line at 100 TRY (saving up for a bike), so you see at a glance whether the bank is above it. Marks
+  //   also take bands ({ y: [a, b] }), statistics of the running total ({ y: "average" }) and column lines ({ x }).
   // - No `animate` prop: the default spring. Bars build one after another on the first draw, a new bar floats out of the
   //   previous one's end, a removed bar shrinks back before it goes. Set animate={false} to draw in place, or an easing
   //   name like "bounce"; reduced motion is honoured automatically.
@@ -32,6 +34,6 @@ export function PiggyBank() {
       <Button size="sm" variant="ghost" on:click={() => { $steps = $steps.slice(0, -1) }}>Geri al</Button>
     </div>
     <WaterfallChart data={() => $steps} start={20} startLabel="Kumbara" totals="end" totalLabel="Şimdi" format={["money", "TRY"]}
-      title="Kumbara" height={240} />
+      marks={[{ y: 100, label: "Bisiklet hedefi 🚲", color: "success" }]} title="Kumbara" height={240} />
   </div>
 }
