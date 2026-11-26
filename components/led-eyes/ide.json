@@ -1,0 +1,26 @@
+{
+  "layout": "component",
+  "description": "Kırpan, etrafa bakan, şaşıran, gülen canlı gözler; işaretçiyi izler, ağız da konuşur.",
+  "sources": [
+    {
+      "type": "code",
+      "name": "SleepyBot.tsx",
+      "src": "examples://components/led-eyes/SleepyBot.tsx"
+    },
+    {
+      "type": "code",
+      "name": "VoiceAssistant.tsx",
+      "src": "examples://components/led-eyes/VoiceAssistant.tsx"
+    },
+    {
+      "type": "code",
+      "name": "LedEyesLab.tsx",
+      "src": "examples://components/led-eyes/LedEyesLab.tsx"
+    },
+    {
+      "type": "code",
+      "name": "LedEyesLab.test.tsx",
+      "src": "examples://components/led-eyes/LedEyesLab.test.tsx"
+    }
+  ]
+}

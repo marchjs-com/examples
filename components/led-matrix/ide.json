@@ -1,0 +1,26 @@
+{
+  "layout": "component",
+  "description": "Canvas üzerinde nokta matris: yalnız değişen LED'ler boyanır; yuvarlak, kare, tüp; ışıma ve tarama çizgisi.",
+  "sources": [
+    {
+      "type": "code",
+      "name": "HeartBeat.tsx",
+      "src": "examples://components/led-matrix/HeartBeat.tsx"
+    },
+    {
+      "type": "code",
+      "name": "CpuHistory.tsx",
+      "src": "examples://components/led-matrix/CpuHistory.tsx"
+    },
+    {
+      "type": "code",
+      "name": "LedMatrixLab.tsx",
+      "src": "examples://components/led-matrix/LedMatrixLab.tsx"
+    },
+    {
+      "type": "code",
+      "name": "LedMatrixLab.test.tsx",
+      "src": "examples://components/led-matrix/LedMatrixLab.test.tsx"
+    }
+  ]
+}

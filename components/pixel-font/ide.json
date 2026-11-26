@@ -1,0 +1,26 @@
+{
+  "layout": "component",
+  "description": "Tüm Türkçe harfli 5×7 ve kalın 8×8 piksel yazı tipi, satır içi :emoji: ile.",
+  "sources": [
+    {
+      "type": "code",
+      "name": "NeonName.tsx",
+      "src": "examples://components/pixel-font/NeonName.tsx"
+    },
+    {
+      "type": "code",
+      "name": "TicketCounter.tsx",
+      "src": "examples://components/pixel-font/TicketCounter.tsx"
+    },
+    {
+      "type": "code",
+      "name": "PixelFontLab.tsx",
+      "src": "examples://components/pixel-font/PixelFontLab.tsx"
+    },
+    {
+      "type": "code",
+      "name": "PixelFontLab.test.tsx",
+      "src": "examples://components/pixel-font/PixelFontLab.test.tsx"
+    }
+  ]
+}
