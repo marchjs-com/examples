@@ -1,7 +1,13 @@
+// BirthdayCountdown: the creative-minimal DatePicker example.
+//
+// What it shows: a birthday counter. Type a date or choose it in the calendar; the age and the days left until the
+// next birthday appear underneath. A birthday in the future is not accepted because of `max`.
+// When to use this pattern: one date that drives a computed message. Keyboard: Alt+Arrow Down opens the calendar.
 import { DatePicker, Field, todayIso } from "march/ui"
 
-// doğum günü sayacı: tarihi yaz ya da takvimden seç; yaşın ve bir sonraki doğum gününe kalan gün çıkar
+// The picker's value is an ISO date string (YYYY-MM-DD) or null when empty.
 type Day = string | null
+// Computes the message from the ISO date: the age, and the days until the next birthday (or a greeting today).
 function countdown(iso: Day): string {
   if (!iso) return "Doğum tarihini seç"
   const [y, m, d] = iso.split("-").map(Number) as [number, number, number]
@@ -13,9 +19,11 @@ function countdown(iso: Day): string {
   return days === 0 ? `İyi ki doğdun! Bugün ${age} yaşındasın 🎂` : `${age} yaşındasın · doğum gününe ${days} gün var`
 }
 
+// $born is bound to the picker below; countdown($born) is read inside the JSX, so the message updates on each change.
 export function BirthdayCountdown() {
   let $born: Day = "1998-05-19"
   return <div sx={{ flex: "col", gap: 2 }}>
+    {/* max={todayIso()}: a date after today is marked invalid, so a birth date in the future cannot be chosen. */}
     <Field label="Doğum tarihin"><DatePicker bind:value={$born} max={todayIso()} /></Field>
     <span sx={{ text: ["lg", "bold"], color: "brand-purple" }}>{countdown($born)}</span>
   </div>

@@ -1,8 +1,17 @@
+// Tests for FileUploadLab. They run in MarchIDE's Tests tab every time you save.
+//
+// How these tests are written (march/testing):
+// - renderTest(() => <FileUploadLab />) mounts the component in a fresh, isolated root and returns a handle `s`.
+// - s.container is the root element; s.text() is all visible text; s.flush() waits until the view has updated;
+//   s.wait(fn, { timeout }) polls until fn is true; s.click(el) clicks like a user; s.dispose() unmounts.
+// - Files cannot be chosen in a test, so `drop` fires a real drop event on the zone with a fake dataTransfer. That goes
+//   through the same code as a user dropping files.
+// - The tests check what a user or a screen reader can observe (texts, ARIA attributes, which elements exist).
 import { test, expect, renderTest } from "march/testing"
 import { FileUploadLab } from "./FileUploadLab.tsx"
 
-// FileUploadLab'in testleri: kaydedince Testler sekmesinde çalışır
-// dosyalar gerçek bir bırakma gibi verilir: bırakma alanına bir drop olayı
+// Helpers: `file` builds a File of a given size (SVG files get real SVG content so a thumbnail can be drawn) and
+// `drop` fires the drop event on a zone the way a browser does (bubbling, cancelable, with a fake dataTransfer).
 const SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><rect width="8" height="8"/></svg>`
 const file = (name: string, type: string, size = 1) => new File([name.endsWith(".svg") ? SVG : "x".repeat(size)], name, { type })
 const drop = (zone: Element, files: File[]) => {
@@ -11,6 +20,7 @@ const drop = (zone: Element, files: File[]) => {
   zone.dispatchEvent(e)
 }
 
+// Single image: an accepted SVG is listed with a thumbnail, a file of the wrong type or too large is rejected and onError gets the message.
 test("tek görsel: önizlemeyle listelenir, tür ve boyut dışı dosya reddedilir (onError)", async () => {
   const s = renderTest(() => <FileUploadLab />)
   const one = s.container.querySelector(".lab-one")!
@@ -30,6 +40,7 @@ test("tek görsel: önizlemeyle listelenir, tür ve boyut dışı dosya reddedil
   s.dispose()
 })
 
+// Several files: maxFiles keeps only two, progress shows while uploading with a Cancel button, then both rows show the done badge; removing one updates the list.
 test("birden çok: en çok 2 dosya, yükleme ilerlemesi, bitince Yüklendi ve kaldırma", async () => {
   const s = renderTest(() => <FileUploadLab />)
   const many = s.container.querySelector(".lab-many")!
@@ -47,6 +58,7 @@ test("birden çok: en çok 2 dosya, yükleme ilerlemesi, bitince Yüklendi ve ka
   s.dispose()
 })
 
+// ARIA of a required, invalid zone: role=button, aria-invalid, aria-describedby pointing to our text, no hint line, and the focus event reaches onFocus.
 test("zorunlu ve geçersiz alanın ARIA'sı; id, odak olayları", async () => {
   const s = renderTest(() => <FileUploadLab />)
   const doc = s.container.querySelector("#lab-doc")!
@@ -60,6 +72,7 @@ test("zorunlu ve geçersiz alanın ARIA'sı; id, odak olayları", async () => {
   s.dispose()
 })
 
+// disabled turns off dropping (aria-disabled, no tab stop, a dropped file is ignored); readonly lists existing files with no remove buttons.
 test("disabled bırakmayı kapatır; readonly var olan dosyaları kaldırma düğmesi olmadan gösterir", async () => {
   const s = renderTest(() => <FileUploadLab />)
   const off = s.container.querySelector(".lab-disabled .m-drop")!

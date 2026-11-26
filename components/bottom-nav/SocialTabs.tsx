@@ -1,18 +1,33 @@
+// SocialTabs: the real-life BottomNav example.
+//
+// The bottom bar of a social app: an unread-chat count, a "something new" dot on the profile, and a Create button in
+// the middle that opens a menu (a long press runs the main action directly). The menu opens inside a phone-sized frame
+// (OverlayScope), not over the whole page. Use this pattern for the main navigation of a mobile-style app.
 import { BottomNav, OverlayScope, toast } from "march/ui"
 import { home, compass, message, user, image, film, radio } from "march/icons"
 
-// bir sosyal uygulamanın alt çubuğu: okunmamış sohbet sayısı, profilde yeni şey noktası, ortada Oluştur menüsü
-// (uzun basış doğrudan gönderi açar); menü telefon çerçevesinin içinde açılır (OverlayScope)
 export function SocialTabs() {
+  // The active tab, the unread chat count and whether the profile has news (reactive state).
   let $tab = "home"
   let $unread = 4
   let $news = true
+  // The page title for each tab. Opening a tab also "reads" what it holds: the chat tab clears its count and the
+  // profile tab clears its dot.
   const titles: Record<string, string> = { home: "Akış", explore: "Keşfet", chat: "Sohbet", me: "Profil" }
   const open = (id: string) => { $tab = id; if (id === "chat") $unread = 0; if (id === "me") $news = false }
-  // telefon boyunda bir çerçeve: alt çubuk ve menü onun içinde yer alır
+  // A phone-sized frame (a fixed block size, a small width): the bar and the menu live inside it. OverlayScope keeps
+  // the Create menu, which is a layer above the page, within this box.
   return <div sx={{ w: "sm", flex: "col" }} style={{ "block-size": "26rem" }}>
     <OverlayScope sx={{ flex: ["col", "between", "grow"], p: 2, gap: 3, radius: 4, shadow: 2 }}>
       <h3 sx={{ text: ["lg", "center"] }}>{titles[$tab]}</h3>
+      {/* value + onChange: the active tab (open also clears the badges).
+          onCreate: runs on a long press of the Create button, because createActions is set (a normal press opens the
+          menu). createTitle names the menu. createActions: the menu entries; `desc` is a second line of text, and
+          `run` is an entry's own handler. onAction then receives the chosen id (after `run`), so here it only
+          handles the entries that have no `run`.
+          Items: badge as a function stays live (0 hides it), dot as a function shows or hides the "new" mark.
+          The menu is a role="menu": focus moves into it, arrow keys move, Escape closes it and returns focus to the
+          Create button. */}
       <BottomNav value={$tab} onChange={open} onCreate={() => toast("Yeni gönderi")} createTitle="Oluştur"
         createActions={[
           { id: "post", label: "Gönderi", icon: image, run: () => toast("Gönderi taslağı açıldı") },
