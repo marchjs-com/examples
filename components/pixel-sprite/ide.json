@@ -1,0 +1,26 @@
+{
+  "layout": "component",
+  "description": "Hazır piksel emoji ve simgeler ya da kendi .led.json çiziminiz; kare kare hareket.",
+  "sources": [
+    {
+      "type": "code",
+      "name": "Campfire.tsx",
+      "src": "examples://components/pixel-sprite/Campfire.tsx"
+    },
+    {
+      "type": "code",
+      "name": "OrderStatus.tsx",
+      "src": "examples://components/pixel-sprite/OrderStatus.tsx"
+    },
+    {
+      "type": "code",
+      "name": "PixelSpriteLab.tsx",
+      "src": "examples://components/pixel-sprite/PixelSpriteLab.tsx"
+    },
+    {
+      "type": "code",
+      "name": "PixelSpriteLab.test.tsx",
+      "src": "examples://components/pixel-sprite/PixelSpriteLab.test.tsx"
+    }
+  ]
+}

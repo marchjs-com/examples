@@ -1,0 +1,26 @@
+{
+  "layout": "component",
+  "description": "Her yöne kayan yazı, emoji, gözler, saat, skor ve geri sayım sahneleri; silme, piksel yağmuru, iris geçişleri.",
+  "sources": [
+    {
+      "type": "code",
+      "name": "LookingAround.tsx",
+      "src": "examples://components/led-board/LookingAround.tsx"
+    },
+    {
+      "type": "code",
+      "name": "EventEntrance.tsx",
+      "src": "examples://components/led-board/EventEntrance.tsx"
+    },
+    {
+      "type": "code",
+      "name": "LedBoardLab.tsx",
+      "src": "examples://components/led-board/LedBoardLab.tsx"
+    },
+    {
+      "type": "code",
+      "name": "LedBoardLab.test.tsx",
+      "src": "examples://components/led-board/LedBoardLab.test.tsx"
+    }
+  ]
+}
