@@ -11,10 +11,19 @@
 import { test, expect, renderTest } from "march/testing"
 import { PhoneInputLab } from "./PhoneInputLab.tsx"
 
+// PhoneInput formats while typing with march/mask; its mask part and the country formats load on demand, the first
+// time a phone field appears. `ready` waits for them (the mirror layer of the mask is drawn once it has loaded).
+async function ready(s: { get: (sel: string) => Element | null; flush: () => Promise<unknown> }) {
+  for (let i = 0; i < 100 && !s.get(".m-mask-mirror"); i++) await new Promise((r) => setTimeout(r, 10))
+  await new Promise((r) => setTimeout(r, 30))
+  await s.flush()
+}
+
 // With country="+90" a national number is stored with its calling code: the leading 0, the spaces and the dashes are
 // dropped, so "0532 111-22-33" becomes "+905321112233". The code is also visible as the field's prefix.
 test("ulusal numara ülke koduyla saklanır: baştaki 0, boşluk ve tireler gider", async () => {
   const s = renderTest(() => <PhoneInputLab />)
+  await ready(s)
   await s.type("Türkiye numarası", "0532 111-22-33")
   expect(s.text().includes("Saklanan: +905321112233 · değişiklik: 1")).toBe(true)
   expect(s.text().includes("+90")).toBe(true)
@@ -24,6 +33,7 @@ test("ulusal numara ülke koduyla saklanır: baştaki 0, boşluk ve tireler gide
 // removed in both cases.
 test("ülke kodu yokken 00 + olur, + korunur", async () => {
   const s = renderTest(() => <PhoneInputLab />)
+  await ready(s)
   await s.type("Uluslararası numara", "0049 151 2345 6789")
   expect(s.text().includes("Uluslararası: +4915123456789")).toBe(true)
   await s.type("Uluslararası numara", "+44 (20) 7946 0000")
@@ -35,6 +45,7 @@ test("ülke kodu yokken 00 + olur, + korunur", async () => {
 // Lab's hint text says so.
 test("eksik numara geçersiz; form öznitelikleri yerinde", async () => {
   const s = renderTest(() => <PhoneInputLab />)
+  await ready(s)
   const el = s.get("#lab-office-phone") as HTMLInputElement
   expect(el.getAttribute("aria-invalid")).toBe(null)
   expect(el.getAttribute("type")).toBe("tel")
@@ -48,14 +59,16 @@ test("eksik numara geçersiz; form öznitelikleri yerinde", async () => {
 })
 
 // prefix and suffix render around the input (an icon and a text, inside the shared affix wrapper); disabled and readonly
-// reach the input; for a readonly number the calling code is in the prefix and the field shows only the national part.
-test("önek, sonek, devre dışı ve salt okunur", () => {
+// reach the input; for a readonly number the calling code is in the prefix and the field shows only the national part,
+// grouped in that country's format ("2079 460000" for +44).
+test("önek, sonek, devre dışı ve salt okunur", async () => {
   const s = renderTest(() => <PhoneInputLab />)
+  await ready(s)
   const pbx = s.find("Santral") as HTMLInputElement
   expect(pbx.closest(".m-affix")?.textContent).toContain("dahili 12")
   expect(pbx.closest(".m-affix")?.querySelector("svg")).not.toBe(null)
   expect(s.find("Kilitli numara")?.hasAttribute("disabled")).toBe(true)
   expect(s.find("Salt okunur numara")?.hasAttribute("readonly")).toBe(true)
-  // the calling code is in the prefix; the field shows the national part
-  expect((s.find("Salt okunur numara") as HTMLInputElement).value).toBe("2079460000")
+  // the calling code is in the prefix; the field shows the national part in the country's grouping
+  expect((s.find("Salt okunur numara") as HTMLInputElement).value).toBe("2079 460000")
 })

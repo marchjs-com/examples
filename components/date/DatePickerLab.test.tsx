@@ -23,12 +23,15 @@ test("dilin sırasıyla yazılan tarih ISO değer olur", async () => {
   expect(s.text().includes("Ay/gün/yıl: 2026-04-07")).toBe(true)
 })
 
-// An impossible date (31 February) or one outside min / max marks the field aria-invalid instead of changing the value,
-// so the old value stays.
+// An impossible date (31 February) cannot be typed (march/mask's date kind refuses the digit), and a real date outside
+// min / max marks the field aria-invalid instead of changing the value, so the old value stays.
 test("olmayan ya da sınır dışı tarih geçersiz sayılır, değer değişmez", async () => {
   const s = renderTest(() => <DatePickerLab />)
-  const field = await s.type("Teslim tarihi", "31.02.2026")
-  expect(field.getAttribute("aria-invalid")).toBe("true")
+  // a day the month does not have cannot even be typed: the field stops at "31.0" and the value stays
+  const field = await s.type("Teslim tarihi", "31.02.2026") as HTMLInputElement
+  expect(field.value).toBe("31.0")
+  expect(s.text().includes("Değer: 2026-03-14")).toBe(true)
+  // a real date outside min / max is typed in full but marked invalid, and not written
   await s.type("Teslim tarihi", "01.01.2027")
   expect(field.getAttribute("aria-invalid")).toBe("true")
   expect(s.text().includes("Değer: 2026-03-14")).toBe(true)

@@ -49,7 +49,7 @@ test("ölçek: binde 40 yazılınca 0.04 saklanır; başka dil kendi biçimiyle"
 
 // The form field: an empty required field is marked invalid, and the attributes of the props reach the input
 // (required, inputmode, the ref callback ran). A valid number clears the invalid mark; text that is not a number never
-// becomes NaN: the field is marked invalid again and the stored value stays the last good one. The last line checks
+// becomes NaN: the field refuses it, keeping its text and the last good value. The last line checks
 // that `disabled` reaches the locked input.
 test("boş zorunlu alan geçersiz; yazınca geçerli olur; harf yazmak NaN üretmez", async () => {
   const s = renderTest(() => <NumberInputLab />)
@@ -61,8 +61,10 @@ test("boş zorunlu alan geçersiz; yazınca geçerli olur; harf yazmak NaN üret
   await s.type("#lab-weight", "72,5")
   expect(s.text().includes("Kilo: 72.5")).toBe(true)
   expect(el.getAttribute("aria-invalid")).toBe(null)
+  // letters make no number: the field refuses them (a short shake), keeps its text and its value
   await s.type("#lab-weight", "yetmiş")
-  expect(el.getAttribute("aria-invalid")).toBe("true")
+  expect(el.value).toBe("72,5")
+  expect(el.getAttribute("aria-invalid")).toBe(null)
   expect(s.text().includes("Kilo: 72.5")).toBe(true)
   expect(s.find("Kilitli sayı")?.hasAttribute("disabled")).toBe(true)
 })
