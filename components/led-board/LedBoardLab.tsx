@@ -4,7 +4,7 @@
 // kind of scene: text, emoji, eyes with a mouth, pixel art, a live score, the clock, a countdown, a ticker and audio bars.
 // The smaller boards below show the props that are easier to see on their own (loop, playing, live text, motion off).
 // Read it as a reference: each prop is commented where it is used.
-import { LedBoard } from "march/led"
+import { LedBoard, type LedScene } from "march/led"
 import { Button, Card } from "march/ui"
 import { audioSource } from "march/audio"
 
@@ -20,12 +20,13 @@ export function LedBoardLab() {
   let $playing = true
   let $scene = 0
 
-  const scenes = [
+  // Typed as LedScene[]: without it TypeScript widens each object literal ({ eye: string }) and the board rejects it.
+  const scenes: LedScene[] = [
     { text: "Merhaba March :sparkle:" },                                   // text with an animated emoji
     { emoji: "rocket" },                                                    // an animated sprite, scaled up to the board
     { eye: "surprised", mouth: "o", duration: 1800 },                       // eyes and a mouth
     { pixels: ["..yy..", ".y..y.", "y.yy.y", ".y..y.", "..yy.."], palette: { y: "#ffd23f" }, duration: 1500 }, // pixel art
-    { score: () => $score, teams: ["EV", "DEP"] as [string, string], duration: 5000 }, // live data: the digits roll
+    { score: () => $score, teams: ["EV", "DEP"], duration: 5000 }, // live data: the digits roll
     { clock: true, duration: 3000 },                                        // HH:mm:ss, or HH:mm when it does not fit
     { countdown: Date.now() + 90_000, done: "BİTTİ", duration: 3000 },
     { ticker: ["BIST +1,2%", "USD 34,10", "EUR 36,80"] },                  // items run past one after another
