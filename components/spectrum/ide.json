@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Sesin frekansları canlı: log ölçekli çubuklar, düşen tepe başlıkları; ayna, halka, çizgi; tema, HADİ ya da kendi renklerin.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "PartyLights.tsx",
+			"src": "examples://components/spectrum/PartyLights.tsx"
+		},
+		{
+			"type": "code",
+			"name": "PodcastPlayer.tsx",
+			"src": "examples://components/spectrum/PodcastPlayer.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SpectrumLab.tsx",
+			"src": "examples://components/spectrum/SpectrumLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "SpectrumLab.test.tsx",
+			"src": "examples://components/spectrum/SpectrumLab.test.tsx"
+		}
+	]
+}

@@ -23,6 +23,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [alert](components/alert) | MoodAlert.tsx, CookieNotice.tsx, AlertLab.tsx, AlertLab.test.tsx |
 | [app-shell](components/app-shell) | NightReader.tsx, AdminApp.tsx, AppShellLab.tsx, AppShellLab.test.tsx |
 | [app-ui](components/app-ui) | HaikuStudio.tsx, QueryConsole.tsx, AppUILab.tsx, AppUILab.test.tsx |
+| [audio-reactive](components/audio-reactive) | DancingEmoji.tsx, SpeakerRing.tsx, AudioReactiveLab.tsx, AudioReactiveLab.test.tsx |
 | [avatar](components/avatar) | TeamRoll.tsx, CommentHeader.tsx, AvatarLab.tsx, AvatarLab.test.tsx |
 | [avatar-group](components/avatar-group) | PartyGuests.tsx, DocViewers.tsx, AvatarGroupLab.tsx, AvatarGroupLab.test.tsx |
 | [badge](components/badge) | MoodTags.tsx, InboxNav.tsx, BadgeLab.tsx, BadgeLab.test.tsx |
@@ -89,6 +90,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [format-toolbar](components/format-toolbar) | NeonSign.tsx, CommentBox.tsx, FormatToolbarLab.tsx, FormatToolbarLab.test.tsx |
 | [forms-code](components/forms-code) | VaultLock.tsx, VerifyPhone.tsx, CodeInputLab.tsx, CodeInputLab.test.tsx |
 | [gantt](components/gantt) | GardenPlan.tsx, EventPlanning.tsx, GanttLab.tsx, GanttLab.test.tsx |
+| [gauge](components/gauge) | RallyCar.tsx, ServerHealth.tsx, GaugeLab.tsx, GaugeLab.test.tsx |
 | [gradient](components/gradient) | SkyPainter.tsx, ProfileCover.tsx, GradientEditorLab.tsx, GradientEditorLab.test.tsx |
 | [grid](components/grid) | ColorWall.tsx, ProductList.tsx, GridLab.tsx, GridLab.test.tsx |
 | [heatmap](components/heatmap) | WaterHabit.tsx, ServerLoad.tsx, HeatmapLab.tsx, HeatmapLab.test.tsx |
@@ -109,6 +111,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [keyframes](components/keyframes) | Heartbeat.tsx, ToastEntrance.tsx, KeyframeTimelineLab.tsx, KeyframeTimelineLab.test.tsx |
 | [layout](components/layout) | Magazine.tsx, Dashboard.tsx, LayoutLab.tsx, LayoutLab.test.tsx |
 | [layout-window](components/layout-window) | RetroDesk.tsx, ChatPopup.tsx, WindowLab.tsx, WindowLab.test.tsx |
+| [level-meter](components/level-meter) | MixingDesk.tsx, MicCheck.tsx, LevelMeterLab.tsx, LevelMeterLab.test.tsx |
 | [like-button](components/like-button) | StarRating.tsx, PhotoLikes.tsx, LikeButtonLab.tsx, LikeButtonLab.test.tsx |
 | [line-chart](components/line-chart) | StepRace.tsx, ShopRevenue.tsx, LineChartLab.tsx, LineChartLab.test.tsx |
 | [link-card](components/link-card) | LearnPath.tsx, AdminHome.tsx, LinkCardLab.tsx, LinkCardLab.test.tsx |
@@ -131,7 +134,9 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [newsletter](components/newsletter) | SecretClub.tsx, BookstoreBulletin.tsx, NewsletterLab.tsx, NewsletterLab.test.tsx |
 | [not-for-you](components/not-for-you) | GrumpyCat.tsx, MealKitFit.tsx, NotForYouLab.tsx, NotForYouLab.test.tsx |
 | [number](components/number) | BillSplit.tsx, GroceryOrder.tsx, NumberInputLab.tsx, NumberInputLab.test.tsx |
+| [odometer](components/odometer) | TripMeter.tsx, EnergyMeter.tsx, OdometerLab.tsx, OdometerLab.test.tsx |
 | [option-list](components/option-list) | MoodBoard.tsx, SlashMenu.tsx, OptionListLab.tsx, OptionListLab.test.tsx |
+| [oscilloscope](components/oscilloscope) | RetroSynth.tsx, MicCheck.tsx, OscilloscopeLab.tsx, OscilloscopeLab.test.tsx |
 | [overflow-text](components/overflow-text) | NowPlaying.tsx, InboxList.tsx, OverflowTextLab.tsx, OverflowTextLab.test.tsx |
 | [overflow-toolbar](components/overflow-toolbar) | PaintBox.tsx, MailToolbar.tsx, OverflowToolbarLab.tsx, OverflowToolbarLab.test.tsx |
 | [overlay](components/overlay) | NightSky.tsx, EventHero.tsx, OverlayLab.tsx, OverlayLab.test.tsx |
@@ -184,6 +189,7 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [slider](components/slider) | SpiceLevel.tsx, LoanCalculator.tsx, SliderLab.tsx, SliderLab.test.tsx |
 | [spacer](components/spacer) | PlayerBar.tsx, TopBar.tsx, SpacerLab.tsx, SpacerLab.test.tsx |
 | [sparkline](components/sparkline) | Heartbeat.tsx, StockWatch.tsx, SparklineLab.tsx, SparklineLab.test.tsx |
+| [spectrum](components/spectrum) | PartyLights.tsx, PodcastPlayer.tsx, SpectrumLab.tsx, SpectrumLab.test.tsx |
 | [spinner](components/spinner) | MagicEightBall.tsx, SaveButton.tsx, SpinnerLab.tsx, SpinnerLab.test.tsx |
 | [splitter](components/splitter) | BeforeAfter.tsx, MailClient.tsx, SplitterLab.tsx, SplitterLab.test.tsx |
 | [stack](components/stack) | TagCloud.tsx, EditorToolbar.tsx, StackLab.tsx, StackLab.test.tsx |
@@ -219,5 +225,6 @@ After changing a page's `ide.json`, run `node tools/bundle.mjs` (`--check` fails
 | [verified-mark](components/verified-mark) | ProfileName.tsx, CommentList.tsx, VerifiedMarkLab.tsx, VerifiedMarkLab.test.tsx |
 | [video-background](components/video-background) | MoodSwitch.tsx, HotelHero.tsx, VideoBackgroundLab.tsx, VideoBackgroundLab.test.tsx |
 | [virtual-list](components/virtual-list) | StarCount.tsx, ChatHistory.tsx, VirtualListLab.tsx, VirtualListLab.test.tsx |
+| [waveform](components/waveform) | VoiceNote.tsx, PodcastPlayer.tsx, WaveformLab.tsx, WaveformLab.test.tsx |
 | [web-reveal](components/web-reveal) | EmojiParade.tsx, WhyUs.tsx, RevealLab.tsx, RevealLab.test.tsx |
 | [wizard](components/wizard) | CoffeeWizard.tsx, EventSignup.tsx, WizardLab.tsx, WizardLab.test.tsx |

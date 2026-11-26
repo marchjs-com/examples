@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Sayı çarklarında sayaç: sabit hane, kırmızı kesir çarkı, birim; mekanik, dijital ya da yaprak saat.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "TripMeter.tsx",
+			"src": "examples://components/odometer/TripMeter.tsx"
+		},
+		{
+			"type": "code",
+			"name": "EnergyMeter.tsx",
+			"src": "examples://components/odometer/EnergyMeter.tsx"
+		},
+		{
+			"type": "code",
+			"name": "OdometerLab.tsx",
+			"src": "examples://components/odometer/OdometerLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "OdometerLab.test.tsx",
+			"src": "examples://components/odometer/OdometerLab.test.tsx"
+		}
+	]
+}
