@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Pil göstergesi: yaylı dolgu ya da hücreler, düşük / kritik renkleri, şarjda şimşek, yuvarlanan yüzde; yatay ya da dikey.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "PhoneCharge.tsx",
+			"src": "examples://components/battery-gauge/PhoneCharge.tsx"
+		},
+		{
+			"type": "code",
+			"name": "DeviceFleet.tsx",
+			"src": "examples://components/battery-gauge/DeviceFleet.tsx"
+		},
+		{
+			"type": "code",
+			"name": "BatteryGaugeLab.tsx",
+			"src": "examples://components/battery-gauge/BatteryGaugeLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "BatteryGaugeLab.test.tsx",
+			"src": "examples://components/battery-gauge/BatteryGaugeLab.test.tsx"
+		}
+	]
+}

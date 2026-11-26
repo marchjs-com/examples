@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Akrep, yelkovan ve saniye ibreli 12 saatlik kadran; tik tak ya da süzülen saniye, saat dilimi, kendi zaman kaynağı.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "WorldClocks.tsx",
+			"src": "examples://components/analog-clock/WorldClocks.tsx"
+		},
+		{
+			"type": "code",
+			"name": "MeetingRoom.tsx",
+			"src": "examples://components/analog-clock/MeetingRoom.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AnalogClockLab.tsx",
+			"src": "examples://components/analog-clock/AnalogClockLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "AnalogClockLab.test.tsx",
+			"src": "examples://components/analog-clock/AnalogClockLab.test.tsx"
+		}
+	]
+}

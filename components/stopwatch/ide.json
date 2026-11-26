@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Kronometre: süzülen saniye ibresi, 30 dakikalık alt kadran, başlat / durdur / tur / sıfırla, en iyi ve en kötü tur.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "FiveSeconds.tsx",
+			"src": "examples://components/stopwatch/FiveSeconds.tsx"
+		},
+		{
+			"type": "code",
+			"name": "RunningLaps.tsx",
+			"src": "examples://components/stopwatch/RunningLaps.tsx"
+		},
+		{
+			"type": "code",
+			"name": "StopwatchLab.tsx",
+			"src": "examples://components/stopwatch/StopwatchLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "StopwatchLab.test.tsx",
+			"src": "examples://components/stopwatch/StopwatchLab.test.tsx"
+		}
+	]
+}

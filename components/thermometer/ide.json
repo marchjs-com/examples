@@ -1,0 +1,26 @@
+{
+	"layout": "component",
+	"description": "Cam termometre: yaylı sıvı sütunu, °C / °F ölçek (ya da ikisi), renkli bölgeler, yuvarlanan gösterge.",
+	"sources": [
+		{
+			"type": "code",
+			"name": "TeaKettle.tsx",
+			"src": "examples://components/thermometer/TeaKettle.tsx"
+		},
+		{
+			"type": "code",
+			"name": "WeatherCard.tsx",
+			"src": "examples://components/thermometer/WeatherCard.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ThermometerLab.tsx",
+			"src": "examples://components/thermometer/ThermometerLab.tsx"
+		},
+		{
+			"type": "code",
+			"name": "ThermometerLab.test.tsx",
+			"src": "examples://components/thermometer/ThermometerLab.test.tsx"
+		}
+	]
+}
